@@ -25,6 +25,8 @@ Also use it when the user asks to humanize, finalize, polish, clean up, rewrite 
 
 Do not use it for code, raw data, tables, changelogs, release notes, legal terms, technical reference docs, or casual chat. In those cases, clarity and factual structure matter more than this copy posture.
 
+Every rule in this skill applies to the entire deliverable: every sentence and every element, including headlines, subheadings, bullets, CTAs, button and link microcopy, captions, pull quotes, image alt text, and footers. Never apply a rule to the body paragraphs only, or to the first section only.
+
 ## Choose the mode
 
 Drafting: write new copy from the brief. Do not invent facts the brief did not give you.
@@ -33,11 +35,63 @@ Finalization: turn a planned or half-built artifact into a clean, consumable tem
 
 Cleanup: improve an existing draft. Preserve the meaning, claims, caveats, sections, and proportions unless the user asks for a deeper rewrite.
 
-Use the lightest mode that solves the task. Do not perform a full rescue rewrite when a clean polish is enough.
+Use the lightest mode that solves the task. The edit bar below defines exactly what the lightest sufficient edit is; apply it in full, neither more nor less.
+
+## The output contract
+
+The reply contains, in this order, and nothing else:
+
+1. The deliverable, starting at the first line of the reply. No preamble, no "here is the copy," no restated brief, no plan.
+2. An editorial note after the deliverable, only when there is something the user must act on or decide.
+
+The editorial note is at most six short lines, each labeled. Use only the labels you need:
+
+- Changed: the one or two structural moves worth knowing about. Not a list of every edit.
+- Verify: claims kept in the copy that still need a source before publishing.
+- Placeholders: how many brackets were left, and where.
+- Flagged: sections that remain clean nothing, and what real material would fix them.
+- Register: `te` or `ön`, only when the copy is headed to Hungarian translation.
+
+Example of a complete, well-formed note:
+
+> Changed: opened on the reader's compliance risk instead of the feature list; merged the two overlapping proof sections.
+> Verify: the "SOC 2 since 2023" line is from your brief; confirm it before publishing.
+> Placeholders: 3, all in the proof section.
+
+Length is calibrated to the deliverable, not to the effort spent:
+
+- Cleanup keeps the output within roughly the input's length. Removing process bleed may shorten it; that is the job working. Do not grow the piece to demonstrate effort, and do not compress it below what the format needs.
+- Drafting writes to the format's natural length: a hero section is a headline, a sentence or two, and a CTA, not four paragraphs. An e-book chapter is not a landing page.
+- If the user names a length, hit it.
+
+## The edit bar
+
+Work in two passes. Coverage first: read the entire piece to the last line and mark every candidate issue as you go: process bleed, unsupported specifics, AI tells, empty sections, dashes, wrapper text. Do not filter while sweeping, do not skip a candidate because it seems minor, and do not stop early because you already found enough to act on. Then apply the bar below to decide what actually changes. The bar does the filtering, not your first impression.
+
+Always fix, even a single instance anywhere in the piece:
+
+- Process bleed of any kind (all seven leaks below), assistant wrapper, and signposting.
+- Unsupported or invented specifics: numbers, names, quotes, results. Replace with a visible placeholder.
+- Certainty inflated past the source, a dropped load-bearing caveat, manufactured proof, scarcity, or urgency.
+- Em and en dashes (subject to the exceptions in the dash rule).
+- Scaffold residue, self-praise, generic positive conclusions, and speculative gap-filling.
+- Marketing buzzwords from the blocklist in `references/ai-tells.md`, in marketing copy, unless quoted or backed by a number.
+
+Fix only when clustered. A cluster is two or more catalog tells inside one paragraph, or three or more within any 150-word span:
+
+- Overused AI vocabulary, -ing analysis tails, copula avoidance, rule of three, negative parallelism, elegant variation, filler phrases, empty hedging, promotional tone, and the other patterns tagged `Bar: cluster` in `references/ai-tells.md`.
+
+Leave alone, even when you notice it:
+
+- A single cluster-bar tell in an otherwise specific, human paragraph.
+- Anything a provided voice sample demonstrably does: its punctuation habits, formality, regional spelling, favorite constructions.
+- The inside of quotation marks. Never edit a quote to satisfy a style rule.
+
+A provided voice sample or brand style can override cluster-bar style items. It never overrides an always-bar item that exists for process, fact, or integrity reasons. Every item in `references/ai-tells.md` carries its bar tag.
 
 ## The sentence test
 
-Apply this question to every sentence:
+Apply this question to every sentence in the deliverable, headings and CTAs included:
 
 > Would this sentence make sense to a reader who never saw the project, chat, plan, outline, prompt, or drafting process?
 
@@ -76,9 +130,9 @@ Four tests catch clean nothing:
 3. So-what ladder. Ask "so what?" of each fact until you reach the consequence the reader can act on or feel. Lead with that consequence, not the bare feature.
 4. Real question. Answer the question under the stated one, usually about risk, status, or effort. "Is it secure?" often means "will I be blamed if this leaks?"
 
-Earn the claim. Show the mechanism that makes a claim true so the reader can see why, instead of asserting it and asking them to trust you. Demonstrated beats declared, and showing the reasoning is what turns persuasion into something the reader actually learns. Draw the mechanism from the true material; if you do not know why it works, flag it rather than inventing a reason.
+Earn the claim. Show the mechanism that makes a claim true so the reader can see why, instead of asserting it and asking them to trust you. Demonstrated beats declared. Draw the mechanism from the true material; if you do not know why it works, flag it rather than inventing a reason.
 
-Keep the tension. Slop is frictionless: everything is great, nothing is hard, no choice has a cost, which is why it is forgettable. Name the hard part, the limit, and who the product is not for. That honesty is a stronger trust signal than any superlative, and it costs you nothing you should have claimed anyway.
+Keep the tension. Slop is frictionless: everything is great, nothing is hard, no choice has a cost, which is why it is forgettable. Name the hard part, the limit, and who the product is not for.
 
 Substance sharpens the user's point. It does not swap in yours. If making a line land would change what the user is actually claiming, flag it instead of rewriting the argument.
 
@@ -109,7 +163,7 @@ Point of view is allowed when the format supports it. Do not inject personality 
 
 ## Dash default
 
-Default to no em dashes or en dashes in final marketing copy. Replace them with a period, comma, colon, parentheses, or a restructured sentence.
+Default to no em dashes or en dashes anywhere in final marketing copy: body, headings, subheads, bullets, CTAs, and captions alike. Replace each one with a period, comma, colon, parentheses, or a restructured sentence. This is an always-fix rule; a single dash gets fixed.
 
 Keep a dash only when it is part of an exact quotation, an explicit user preference, or an established brand voice. Do not misquote a source to satisfy this rule.
 
@@ -123,48 +177,69 @@ If a claim is plausible but unsupported, weaken it, mark it for verification, or
 
 ## Voice safety
 
-If the user provides a writing sample, brand voice, or style guide, follow that over this skill's default taste. Match sentence length, vocabulary, formality, directness, humor level, opening style, and closing style.
+If the user provides a writing sample, brand voice, or style guide, follow that over this skill's default taste. Match sentence length, vocabulary, formality, directness, humor level, opening style, and closing style. Apply the matched voice to every section of the deliverable, including headlines, CTAs, and microcopy, not only the body.
 
-With no sample, default to grounded, concrete, direct, and mildly opinionated only where the format allows. Do not stamp one edgy persona onto every project.
+With no sample, default to grounded, concrete, direct, and mildly opinionated only where the format allows. Do not fall back on one house style across projects; pick the register this format and this reader call for, and commit to it.
 
-Do not over-edit good human writing. A single formal word, transition, salutation, or dash is not proof of AI writing. Act on clear process bleed, factual risk, or clusters of generic prose.
+When the piece is voice-sensitive, no sample exists, and the user can answer, offer two or three one-line voice directions (each a posture plus one sample sentence rewritten in it) and write in the chosen one. When the user asked for immediate output, write in the grounded default and name the direction you took in the editorial note. The full move is in `references/voice-calibration.md`.
+
+Do not over-edit good human writing. The edit bar defines the line: always-bar items get fixed even alone; a single cluster-bar tell in otherwise specific human prose stays.
+
+## Reasoning depth
+
+Substance and integrity work is multi-step reasoning. Before writing or rewriting, think the piece through: who the reader is, the real question under the stated one, the so-what ladder down to the consequence, and which claims the evidence can actually carry. Do that thinking before the first line of copy, not while drafting.
+
+Mechanical cleanup of a short piece (a dash, a wrapper sentence, obvious bleed) needs no deep pass. Make the edits directly.
+
+## When to load references and run the scanner
+
+Load each file at the moment its trigger appears, not preemptively and not never:
+
+- `references/ai-tells.md`: read it at the start of every cleanup pass on a draft you did not write. It is the full tell catalog, and every item carries its bar tag.
+- `references/substance.md`: read it before rewriting any piece you have judged clean but empty, and before drafting from a thin brief.
+- `references/integrity.md`: read it whenever an edit would make a claim more convincing, the copy touches health, money, safety, or legal territory, or scarcity, urgency, or social proof appears in the draft.
+- `references/process-bleed.md`: read it when bleed survives a first pass or the piece heavily narrates itself.
+- `references/voice-calibration.md`: read it when the user provides a sample or brand voice, and when the piece is voice-sensitive with no sample.
+- `references/qa-scorecard.md`: read it when the user asks how ready the copy is, and before shipping long or high-stakes pieces.
+- `references/translation-handoff.md`: read it when the output is headed to Hungarian.
+
+Run `scripts/copy_scan.py` on any deliverable over roughly 600 words, and on any multi-section piece, before shipping:
+
+```bash
+python scripts/copy_scan.py draft.txt
+```
+
+Treat the script as a scanner, not a judge: its hits are candidates for the edit bar, and its silence proves nothing about substance.
 
 ## Pairing with translation
 
-When the output needs to be Hungarian, this skill chains with `translating-english-to-hungarian`, which renders English as idiomatic, native Hungarian rather than a word-for-word calque.
+When the output needs to be Hungarian, this skill chains with `translating-english-to-hungarian`. Humanize in English first, then translate: sketch, to consumable English template (this skill), to native Hungarian (the translation skill), to final prose (a human).
 
-- Humanize in English first, then translate. The chain is sketch, to consumable English template (this skill), to native Hungarian (the translation skill), to final prose (a human).
-- Interpret, do not transliterate. Aim for what a Hungarian writer would have written. Flag English-only wordplay that will not survive sense-for-sense translation.
-- Pass the register with the voice. Casual or founder-led English should become `te`; formal or institutional English stays `ön`, the translator's default. Note the intended register outside the copy.
-- Placeholders pass through untranslated, like code and brand names. The human fills them during finishing.
-- Integrity travels with the meaning: the Hungarian must not read more certain than the English, must keep every caveat, and must add no proof, scarcity, or urgency the source lacked.
-- Hungarian typography wins in the translated output (Hungarian quotation marks, decimal comma, date format). The dash default is an English-output rule.
-
-For the full handoff, use `references/translation-handoff.md`.
+Pass the register with the voice (`te` for casual or founder-led copy, `ön` for formal or institutional, and the translator defaults to `ön`). Placeholders pass through untranslated. Integrity travels with the meaning: the Hungarian must not read more certain than the English, must keep every caveat, and must add no proof, scarcity, or urgency the source lacked. Hungarian typography wins in the translated output. The full handoff is `references/translation-handoff.md`.
 
 ## Workflow
 
 For drafting or finalization:
 1. Identify the reader, product, offer, proof, main objection, and next step from the provided material.
-2. Find the point worth making. Run the so-what ladder and the real-question test on the material before you write, so the copy leads with substance instead of backing into it.
-3. Write the deliverable only. Do not put planning notes, rationale, or assistant wrapper inside the copy.
-4. Apply the sentence test, the four substance tests, fact safety, voice safety, and dash default.
+2. Think before writing (see Reasoning depth): find the point worth making with the so-what ladder and the real-question test, so the copy leads with substance instead of backing into it.
+3. Write the deliverable only, to the format's natural length. No planning notes, rationale, or assistant wrapper inside the copy.
+4. Sweep the entire draft, first line to last: the sentence test on every sentence, the edit bar on every candidate, fact safety, voice safety, and the dash default.
 5. Run the harm check: no claim more certain or proven than the source supports, every needed caveat kept, no manufactured proof or pressure.
-6. Deliver clean copy. Put any editorial note outside the deliverable, and only if useful.
+6. Deliver per the output contract.
 
 For cleanup:
-1. Scan for process bleed first.
-2. Scan for unsupported specifics, overclaims, and certainty inflated past the source. Keep load-bearing caveats.
-3. Scan for clusters of AI-flavored prose using `references/ai-tells.md` only as a diagnostic lookup.
-4. Scan for clean nothing: lines that pass every check but say nothing only this writer could say. Sharpen them from the real material, or flag the gap with a placeholder.
-5. Rewrite with the smallest effective edit, and never one that makes a claim more believable than it is true.
-6. Preserve meaning. If you remove or restructure something for strategy reasons, say so outside the rewritten copy.
+1. Coverage pass: read the whole piece to the end and mark every candidate: process bleed, unsupported specifics, inflated certainty, AI tells, dashes, wrapper, and clean-nothing sections. Do not filter yet.
+2. Bar pass: apply the edit bar to each candidate. Always-bar items get fixed. Cluster-bar items get fixed when clustered and left when alone.
+3. Rewrite with those edits, never one that makes a claim more believable than it is true. Preserve meaning, claims, caveats, sections, and proportions.
+4. Substance pass: sharpen surviving clean-nothing sections from the real material, or flag the gap with a placeholder.
+5. Verification pass: re-read the full output against the checklist below. Fix any failure and re-check that item.
+6. Deliver per the output contract. If you removed or restructured something for strategy reasons, say so in the editorial note.
 
-The output of either path is a template for a human to finish, not publish-ready copy. If it needs to be Hungarian, translate last, after the harm check, and pass the register. See `references/translation-handoff.md`.
+The output of either path is a template for a human to finish, not publish-ready copy. If it needs to be Hungarian, translate last, after the harm check, and pass the register.
 
 ## Before shipping
 
-Check these in order:
+Re-read the complete deliverable from the first line to the last and check every item below against every section, headings and CTAs included. If an item fails, fix it and check that item again:
 
 - No sentence refers to the chat, request, prompt, project plan, outline, file system, internal decisions, or drafting process.
 - Every paragraph serves the reader's situation, product behavior, offer, proof, objection, or next step.
@@ -172,20 +247,18 @@ Check these in order:
 - Every specific is supplied by the input or marked with a visible placeholder.
 - No claim is more certain, proven, or universal than the source supports, and every safety, legal, or financial caveat is intact.
 - No review, statistic, testimonial, scarcity, urgency, or named-person quote is invented; missing ones are visible placeholders.
-- The voice matches the provided sample or the format.
-- Em and en dashes are removed unless an exception applies.
+- The voice matches the provided sample or the format, everywhere in the piece.
+- Em and en dashes are gone from every element unless a stated exception applies.
 - No assistant wrapper remains: no "here is the copy," "below is," "hope this helps," or "let me know."
-- The output is the deliverable the user asked for, not a commentary about making it.
-
-For long deliverables, you may run `scripts/copy_scan.py` as a warning net. Treat the script as a scanner, not a judge.
+- The reply follows the output contract: deliverable first, editorial note after it only if needed, nothing else.
 
 ## References
 
 - `references/process-bleed.md`: expanded examples and fast scan phrases.
-- `references/substance.md`: the intelligence layer. How to say something worth reading, with tests and worked examples. Use it whenever copy is clean but weightless.
-- `references/integrity.md`: the do-more-good-than-harm layer. Persuasion within evidence, caveat preservation, no manufactured authenticity, and the boundary on disguising authorship. Use it whenever an edit would make a claim more believable.
-- `references/ai-tells.md`: diagnostic catalog for generic AI prose. Use it on clusters, not isolated words.
+- `references/substance.md`: the intelligence layer. How to say something worth reading, with tests and worked examples.
+- `references/integrity.md`: the do-more-good-than-harm layer. Persuasion within evidence, caveat preservation, no manufactured authenticity, and the boundary on disguising authorship.
+- `references/ai-tells.md`: the tell catalog, every item tagged with its edit-bar level.
 - `references/qa-scorecard.md`: score finished copy before shipping or when testing the skill.
-- `references/voice-calibration.md`: quick voice matching guide.
-- `references/translation-handoff.md`: how to chain with `translating-english-to-hungarian` for interpretive Hungarian, including register, placeholders, and integrity across languages.
-- `scripts/copy_scan.py`: optional heuristic scanner for long drafts.
+- `references/voice-calibration.md`: voice matching, the grounded default, and the propose-directions move.
+- `references/translation-handoff.md`: chaining with `translating-english-to-hungarian`, including register, placeholders, and integrity across languages.
+- `scripts/copy_scan.py`: heuristic scanner for long drafts.

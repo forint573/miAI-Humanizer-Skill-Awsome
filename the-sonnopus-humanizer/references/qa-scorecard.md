@@ -16,7 +16,7 @@ Use this to judge whether a finished piece is production-ready. Score each categ
 
 1: Minor signposting or artifact meta remains.
 
-2: The copy stands alone for an outside reader.
+2: The copy stands alone for an outside reader, in every section: headings, CTAs, and captions included.
 
 ## 3. Reader and product focus
 
@@ -66,13 +66,13 @@ Use this to judge whether a finished piece is production-ready. Score each categ
 
 2: Meaning, caveats, and structure were preserved unless the user asked otherwise.
 
-## 9. Output hygiene
+## 9. Output hygiene and contract
 
-0: The answer includes assistant wrapper text inside the deliverable.
+0: The answer includes assistant wrapper text inside the deliverable, or buries the deliverable under preamble or commentary.
 
-1: Minor formatting residue remains.
+1: Minor formatting residue remains, or the editorial note sprawls past its format.
 
-2: The deliverable is clean, paste-ready, and free of accidental wrapper.
+2: The reply follows the output contract: the deliverable starts at the first line, the editorial note (if any) comes after it in its labeled format, and nothing else is present.
 
 ## 10. Integrity (do more good than harm)
 

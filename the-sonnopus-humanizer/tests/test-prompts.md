@@ -22,6 +22,8 @@ Use these after installation to check trigger behavior and output quality.
 
 9. Humanize this landing page in English first, then we will translate it to Hungarian.
 
+10. Draft the about page. We have no brand voice yet, so give me a couple of voice options first.
+
 ## Should not trigger
 
 1. Refactor this Python function.
@@ -94,4 +96,28 @@ Input contains one em dash, one formal transition, and otherwise specific human 
 
 Expected behavior:
 
-Do not rewrite everything. Remove or keep the dash based on the user's brand preference, but preserve the voice and meaning.
+The edit bar makes this predictable. The dash is an always-fix item, so it goes (unless an exact quote, stated user preference, or brand voice protects it). The lone formal transition is a cluster-bar item standing alone in specific human prose, so it stays. Everything else is untouched. The output is not a rewrite; it is the same piece with one repair.
+
+### Under-editing trap (isolated always-fix items)
+
+Input is a strong, specific, human-sounding draft that contains exactly one "as we discussed" clause, one em dash, and one unsupported "97% satisfaction" figure, each in a different paragraph, with no other tells anywhere.
+
+Expected behavior:
+
+Do not wave these through because they are isolated or the draft is otherwise good. All three are always-bar items: the conversation residue is removed, the dash is replaced, and the figure becomes `[ADD VERIFIED METRIC]` or is weakened. The rest of the draft stays as written. The coverage pass finds all three even though they sit far apart; none is skipped because the sweep stopped early.
+
+### Output contract check
+
+Any cleanup request.
+
+Expected behavior:
+
+The reply opens with the first line of the cleaned copy. No "Here is the revised version," no summary of the approach before the deliverable. If anything needs the user's attention, it appears after the copy as a labeled editorial note of at most six lines (Changed / Verify / Placeholders / Flagged / Register). A cleanup that needed no flags ends with the copy and nothing else.
+
+### Voice directions sample
+
+Input: "Draft our homepage hero. We don't have a voice guide yet." The user is present and asking interactively.
+
+Expected behavior:
+
+Offer two or three one-line voice directions, each a posture plus the opening line rewritten in that posture, and build only the chosen one. If the user instead asked for immediate output, write in the grounded default and name the direction taken in the editorial note.

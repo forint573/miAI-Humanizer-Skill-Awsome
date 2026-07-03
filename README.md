@@ -9,7 +9,7 @@
 [![CI](https://github.com/forint573/miAI-Humanizer-Skill-Awesome/actions/workflows/ci.yml/badge.svg)](https://github.com/forint573/miAI-Humanizer-Skill-Awesome/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-d97757.svg)](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
-[![Made for Sonnet & Opus](https://img.shields.io/badge/Made_for-Sonnet_%26_Opus-8a63d2.svg)](#)
+[![Tuned for Sonnet 5 & Opus 4.8](https://img.shields.io/badge/Tuned_for-Sonnet_5_%26_Opus_4.8-8a63d2.svg)](#tuned-for-claude-sonnet-5-and-opus-48)
 
 </div>
 
@@ -20,6 +20,8 @@
 The Sonnopus Humanizer drafts and de-slops marketing and long-form copy: landing pages, e-books, reports, case studies, sales pages, product copy, and founder notes. Its main job is to turn a quick sketch into a consumable template, clean, specific, voiced, and honestly sourced, that a human finishes into final prose. It keeps the writing about the reader and the product, it refuses to invent facts, and it preserves a real voice instead of flattening it into house style. It also does the part most humanizers skip: it makes the copy say something. Clean but empty is a failure here, not a finish line.
 
 It is built for copywriters, marketers, and founders who draft with AI and want copy that does not read like AI. It is not an AI-detector bypass. It makes weak copy read like a person actually wrote it, and worth the reader's time once they did.
+
+Version 3 is calibrated for Claude Sonnet 5 and Claude Opus 4.8: a concrete edit bar instead of taste, coverage-first cleanup, a fixed output shape, and explicit scope on every rule, because these models do exactly what the instructions say and nothing they don't. The details are in [Tuned for Claude Sonnet 5 and Opus 4.8](#tuned-for-claude-sonnet-5-and-opus-48).
 
 Install it in one line, then ask Claude to humanize your copy.
 
@@ -94,6 +96,28 @@ If your final copy needs to be Hungarian, chain this with [`translating-english-
 
 Humanize in English first, then translate. The chain is sketch, to a consumable English template here, to native Hungarian there, to final prose by a human. The handoff carries the voice (including the formal `ön` or informal `te` register), leaves placeholders untranslated for the human to fill, and keeps the integrity rules across the language line, so the Hungarian never reads more certain than the English or drops a caveat for flow. The details are in `references/translation-handoff.md`.
 
+## Tuned for Claude Sonnet 5 and Opus 4.8
+
+Sonnet 5 and Opus 4.8 changed how instructions behave. They follow prompts literally, they do not silently generalize a rule beyond its stated scope, and when you tell them to be conservative, they are exactly that conservative. Anthropic's own model guides warn that harnesses tuned for earlier models can lose recall on these two, not because the model finds less, but because it obeys a vague "don't nitpick" more faithfully than its predecessors did. For a humanizer, that failure mode is under-editing: the model notices the tell and leaves it in, because the old instructions said "act on clusters" and "don't over-edit."
+
+Version 3 rebuilds the skill around that behavior instead of fighting it:
+
+- **A concrete edit bar replaces qualitative taste.** Every tell in the catalog is tagged: always-fix (a single em dash, one "as we discussed," one unsupported number gets fixed anywhere it appears), cluster-fix (style tells like AI vocabulary change only when two land in one paragraph or three in 150 words), or leave-alone. "Don't over-edit" is now a definition, not a mood, so the same draft comes back the same way every time.
+- **Coverage first, filtering second.** Cleanup runs two passes: sweep the entire piece and mark every candidate without judging, then let the bar decide what changes. The model never drops a finding on a hunch that it was minor.
+- **Explicit scope on every rule.** These models apply an instruction exactly where you say and nowhere else, so every rule now names its territory: the whole deliverable, headlines, CTAs, button microcopy, captions, and footers included.
+- **A fixed output shape.** The reply starts with the deliverable's first line and ends with, at most, a six-line labeled editorial note (Changed / Verify / Placeholders / Flagged / Register). Both models calibrate verbosity to perceived task complexity; the contract pins the shape so a heavy edit never arrives wrapped in commentary.
+- **Explicit reference and scanner triggers.** Opus 4.8 in particular favors reasoning over reaching for files. Each reference now has a named load trigger ("read `ai-tells.md` at the start of every cleanup pass"), and the scanner has a word-count threshold, so the deep catalogs actually get used.
+- **Voice directions instead of a house style.** Left to their defaults, these models settle into one consistent voice, and generic "sound more human" prompts just swap it for a different fixed voice. For voice-sensitive work with no sample, the skill now proposes two or three concrete directions as rewritten opening lines and builds only the one you pick.
+
+Running it, a few settings matter:
+
+- **Effort.** Use `high` (the Sonnet 5 default) for normal drafting and cleanup. Raise to `xhigh` for substance-heavy rescue rewrites of long pieces; both guides recommend it for the hardest agentic work. At `low`, these models scope tightly to the letter of the request, which fights the skill's coverage pass.
+- **Thinking.** Sonnet 5 ships with adaptive thinking on by default; leave it on. On Opus 4.8, thinking is off unless you set `thinking: {type: "adaptive"}`; set it for anything past mechanical cleanup, since the substance and integrity passes are exactly the multi-step reasoning it helps.
+- **Token headroom.** Sonnet 5's tokenizer produces roughly 30% more tokens for the same text, and thinking shares the `max_tokens` budget. For e-book chapters and long reports, raise `max_tokens` or the output truncates mid-template.
+- **One well-specified turn.** Both models do their best work when the task, voice, facts, and constraints arrive upfront rather than drip-fed across turns. Put the brief, the writing sample, and the proof in the first message.
+
+Earlier Sonnet and Opus models still run the skill fine; they just benefit less from the calibration.
+
 ## Install
 
 Three ways, fastest first.
@@ -157,7 +181,7 @@ the-sonnopus-humanizer/
 │   ├── process-bleed.md          # the seven leaks, examples, fast-scan phrases
 │   ├── substance.md              # the intelligence layer: how to say something worth reading
 │   ├── integrity.md              # the safety layer: do more good than harm
-│   ├── ai-tells.md               # diagnostic catalog of generic AI prose
+│   ├── ai-tells.md               # tell catalog, every item tagged with its edit-bar level
 │   ├── qa-scorecard.md           # 10-category, 0 to 2 readiness score
 │   ├── voice-calibration.md      # matching a sample or brand voice
 │   └── translation-handoff.md    # chaining with the Hungarian translation skill
@@ -172,8 +196,10 @@ the-sonnopus-humanizer/
 - **Lean active layer.** `SKILL.md` holds only what the model needs in context to act. The deeper catalogs live in `references/` and load on demand, which keeps the instruction layer clear for both Sonnet and Opus.
 - **Clean is not the finish line.** De-slopping removes what should not be there. `substance.md` supplies what should: the specific, defensible point only this writer could make. The skill treats clean-but-empty copy as a failure and draws the substance from your material, never from an invented fact.
 - **Persuasion comes with a firewall.** A humanizer makes copy more convincing, so `integrity.md` makes sure it never gets more convincing than it is true. Persuasion never outruns evidence, real caveats stay, and authenticity is never faked. The scanner flags high-liability claims and manufactured pressure for you to verify or cut.
-- **Diagnose on clusters, not words.** `ai-tells.md` names why something reads as machine written. One formal word, one transition, or one dash is not proof of AI writing.
-- **Lightest effective edit.** Drafting, finalization, and cleanup are separate modes. The skill picks the smallest one that solves the task instead of rewriting good prose for its own sake.
+- **A bar, not a mood.** `ai-tells.md` names why something reads as machine written, and every item carries an edit-bar tag: always-fix, cluster-fix (two tells in a paragraph, or three per 150 words), or leave-alone. One formal word is still not proof of AI writing, and now that judgment is a definition the model applies the same way every run.
+- **Coverage before filtering.** Cleanup marks every candidate issue across the whole piece first and decides second, so a conservative instruction can never quietly turn into skipped findings.
+- **A fixed reply shape.** Deliverable first, labeled editorial note after it only when needed. The copy never arrives buried in commentary.
+- **Lightest effective edit.** Drafting, finalization, and cleanup are separate modes. The skill picks the smallest one that solves the task instead of rewriting good prose for its own sake, and the bar defines what "smallest" means.
 
 ## FAQ
 
@@ -184,7 +210,10 @@ Copywriters, marketers, founders, and anyone who drafts marketing or long-form c
 No. This is not an AI-detection bypass tool. It improves real copy: it removes AI tells and process bleed, flags unverified claims, and keeps your voice. The goal is honest, publishable writing, not gaming a detector.
 
 **Which models does it work with?**
-It is written for Claude and tuned for both Sonnet and Opus. It works anywhere Claude reads skills, including Claude Code, the desktop and web apps, and any setup that accepts custom skills.
+It is written for Claude and calibrated for Claude Sonnet 5 and Claude Opus 4.8, including their literal instruction following, their strict respect for stated bars, and their default reply shapes. Earlier Sonnet and Opus models run it fine and simply benefit less from the calibration. It works anywhere Claude reads skills, including Claude Code, the desktop and web apps, and any setup that accepts custom skills.
+
+**What changed in version 3?**
+The judgment calls became definitions. "Don't over-edit" is now an edit bar with three levels and a numeric cluster threshold, cleanup became a two-pass sweep (coverage first, then the bar), the reply shape is a contract (deliverable first, labeled note after), every rule states its scope down to CTAs and captions, every reference file has a named load trigger, and voice-sensitive drafting can propose concrete voice directions before building. See the [model tuning section](#tuned-for-claude-sonnet-5-and-opus-48) for why.
 
 **Will it invent facts to fill a gap?**
 No. Missing proof becomes a visible placeholder such as `[ADD VERIFIED METRIC]`, never a fabricated number, name, or testimonial.

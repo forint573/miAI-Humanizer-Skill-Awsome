@@ -10,6 +10,8 @@ Would this sentence make sense to a reader who never saw the project, chat, plan
 
 If not, rewrite it around the reader, product, offer, proof, objection, or next step.
 
+Apply the test to every sentence in the deliverable, headings, bullets, CTAs, and captions included, and sweep to the last line. Bleed concentrates at the openings and closings of sections, but scaffold residue can sit anywhere.
+
 ## Fast scan phrases
 
 These phrases often introduce process bleed. Confirm with the sentence test before cutting.

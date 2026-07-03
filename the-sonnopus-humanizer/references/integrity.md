@@ -80,7 +80,7 @@ This skill is not an AI-detector bypass. The goal is honest writing that happens
 
 ## Before shipping: the harm check
 
-After the substance pass, before you call it done:
+After the substance pass, before you call it done, run this over the entire deliverable: every claim in every section, headlines, CTAs, captions, and footnotes included. Overclaims hide in headlines more often than in body text, because headlines get compressed hardest:
 
 - No claim is more certain, proven, or universal than the source supports.
 - Every safety, legal, financial, or uncertainty caveat that was in the source is still here.

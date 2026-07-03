@@ -110,9 +110,9 @@ Ask of every cliché: what was I trying to say before I reached for that phrase?
 
 ## By mode
 
-**Drafting.** You have the most room here, but the room is inside the brief. Bring the sharpest true framing the material supports. Lead with the reader's real question. Make claims that pass the negation test. Where the brief lacks the specific that would make a line land, place a visible placeholder rather than a confident guess.
+**Drafting.** You have the most room here, but the room is inside the brief. This is multi-step reasoning: run the so-what ladder and the real-question test on the material before writing the first line of copy, not while drafting. Bring the sharpest true framing the material supports. Lead with the reader's real question. Make claims that pass the negation test. Where the brief lacks the specific that would make a line land, place a visible placeholder rather than a confident guess.
 
-**Cleanup.** The harder case. If the draft is clean but empty, you cannot inject substance the source does not support, because that is invention. You do two things: compress and sharpen what is genuinely there, and surface the emptiness honestly. A section that makes no claim a reader could disagree with does not need polish; it needs a real point or real proof. Say so outside the copy and mark the gap. Do not buff clean nothing into shinier nothing.
+**Cleanup.** The harder case. Judge every section against these tests, not just the sections that already look weak; clean nothing hides best in the paragraphs that read smoothly. If the draft is clean but empty, you cannot inject substance the source does not support, because that is invention. You do two things: compress and sharpen what is genuinely there, and surface the emptiness honestly. A section that makes no claim a reader could disagree with does not need polish; it needs a real point or real proof. Say so outside the copy and mark the gap. Do not buff clean nothing into shinier nothing.
 
 ## The voice guard
 

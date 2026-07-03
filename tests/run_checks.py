@@ -105,6 +105,25 @@ for ref in ["references/process-bleed.md", "references/substance.md",
     check(f"SKILL.md mentions {ref}", ref in skill_md)
 
 
+# --- 3b. Sonnet 5 / Opus 4.8 calibration structure ----------------------------
+section("Model calibration structure (v3)")
+
+check("SKILL.md has an output contract", "## The output contract" in skill_md)
+check("SKILL.md has an edit bar", "## The edit bar" in skill_md)
+check("SKILL.md defines the cluster threshold", "150-word span" in skill_md)
+check("SKILL.md has reference load triggers", "## When to load references" in skill_md)
+check("SKILL.md states whole-deliverable scope", "entire deliverable" in skill_md)
+
+ai_tells_md = (SKILL_DIR / "references" / "ai-tells.md").read_text(encoding="utf-8")
+bar_tags = ai_tells_md.count("**Bar:")
+check("ai-tells items carry bar tags (>=33)", bar_tags >= 33, f"found {bar_tags}")
+check("ai-tells has always-bar items", "**Bar: always" in ai_tells_md)
+check("ai-tells has cluster-bar items", "**Bar: cluster" in ai_tells_md)
+
+voice_md = (SKILL_DIR / "references" / "voice-calibration.md").read_text(encoding="utf-8")
+check("voice guide has the propose-directions move", "Propose voice directions" in voice_md)
+
+
 # --- 4. Scanner compiles ----------------------------------------------------
 section("Scanner compiles")
 

@@ -5,6 +5,86 @@ All notable changes to The Sonnopus Humanizer are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2026-07-03
+
+The Sonnet 5 and Opus 4.8 calibration release. These models follow
+instructions literally, do not generalize a rule beyond its stated scope, and
+apply a conservative instruction exactly as conservatively as written, which
+turns vague taste ("don't over-edit," "act on clusters") into silent
+under-editing. This release converts every judgment call the skill used to
+imply into a definition it states, following Anthropic's published prompting
+guidance for both models: concrete bars over qualitative terms, coverage
+before filtering, explicit scope on every instruction, positive examples,
+defined output shape, and named triggers for loading references and tools.
+
+### Added
+- `SKILL.md`: an edit bar with three levels. Always-fix items (process bleed,
+  wrapper, unsupported specifics, certainty inflation, dashes, scaffold,
+  buzzword blocklist) get fixed on a single instance anywhere in the piece.
+  Cluster-fix items (AI vocabulary, -ing tails, rule of three, and the other
+  style tells) change only at a numeric threshold: two catalog tells in one
+  paragraph, or three within any 150-word span. Leave-alone items are named
+  too, so the over-editing guard is now as concrete as the under-editing one.
+- `SKILL.md`: a two-pass cleanup workflow. Coverage pass first (sweep the
+  entire piece, mark every candidate, no filtering, no stopping early), bar
+  pass second (the bar decides what changes, not first impressions).
+- `SKILL.md`: an output contract. The reply is the deliverable starting at
+  line one, then at most a six-line labeled editorial note (Changed / Verify /
+  Placeholders / Flagged / Register), with a worked example, plus length
+  rules that calibrate output to the format instead of to effort.
+- `SKILL.md`: explicit whole-deliverable scope on every rule: headlines,
+  subheads, bullets, CTAs, button and link microcopy, captions, alt text, and
+  footers, stated once globally and repeated on the rules that need it most
+  (sentence test, dash default, voice matching, harm check).
+- `SKILL.md`: a reasoning-depth section. Substance and integrity work is
+  named as multi-step reasoning to do before writing; mechanical cleanup is
+  named as direct work that needs no deep pass. Matches adaptive-thinking
+  steering guidance for both models.
+- `SKILL.md`: named load triggers for every reference file and a word-count
+  threshold for the scanner, because Opus 4.8 favors reasoning over tool
+  calls unless told when and why to reach for them.
+- `references/ai-tells.md`: every one of the 33 catalog items now carries a
+  bar tag (always / cluster / context) with the tag's rationale where it is
+  not obvious, plus the two overrides: a voice sample can protect style items
+  but never process, fact, or integrity items, and fact safety outranks every
+  tag.
+- `references/voice-calibration.md`: a propose-voice-directions move. For
+  voice-sensitive work with no sample, offer two or three directions as
+  rewritten opening lines and build only the chosen one; when immediate
+  output was requested, use the grounded default and name it in the editorial
+  note. Plus an explicit warning that the model's own default voice must not
+  become the brand's, and whole-deliverable scope for voice matching.
+- `tests/test-prompts.md`: an under-editing trap (isolated always-bar items
+  must be fixed even in an excellent draft), an output-contract check, a
+  voice-directions sample, and a rewritten over-editing trap that resolves
+  by the bar instead of by feel.
+- `tests/run_checks.py`: structural checks for the v3 calibration (output
+  contract, edit bar, cluster threshold, reference triggers, whole-deliverable
+  scope, bar tags on all catalog items, propose-directions move).
+- Root README: a "Tuned for Claude Sonnet 5 and Opus 4.8" section explaining
+  the calibration and the operator settings that matter (effort levels,
+  adaptive thinking on Opus 4.8, Sonnet 5 tokenizer headroom for long
+  outputs, one well-specified turn).
+
+### Changed
+- `references/substance.md`: drafting now names its think-before-writing
+  step; cleanup now judges every section, not only the visibly weak ones.
+- `references/integrity.md`: the harm check states its scope: every claim in
+  every section, headlines and CTAs included.
+- `references/process-bleed.md`: the sentence test states its scope and
+  sweep-to-the-end requirement.
+- `references/qa-scorecard.md`: category 9 became "Output hygiene and
+  contract" and scores the reply shape; category 2 checks cleanliness across
+  every element.
+- Both READMEs reframed around the calibration; the badge now says which
+  models the skill is tuned for.
+
+### Kept
+- Every 2.0 layer as the foundation: the substance tests, the integrity
+  rules, fact safety, voice preservation, the dash default, the seven leaks,
+  and the template-not-final-copy positioning. The calibration changes how
+  reliably those rules fire on the current models, not what they say.
+
 ## [2.0.0] - 2026-06-13
 
 The intelligence and integrity release. Version 1.0 made copy clean: no AI
@@ -113,5 +193,6 @@ First public release.
 - Repository scaffolding: Apache-2.0 LICENSE, NOTICE, CONTRIBUTING,
   CODE_OF_CONDUCT, build script, automated checks, and CI.
 
+[3.0.1]: https://github.com/forint573/miAI-Humanizer-Skill-Awesome/releases/tag/v3.0.1
 [2.0.0]: https://github.com/forint573/miAI-Humanizer-Skill-Awesome/releases/tag/v2.0.0
 [1.0.0]: https://github.com/forint573/miAI-Humanizer-Skill-Awesome/releases/tag/v1.0.0

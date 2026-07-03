@@ -8,15 +8,20 @@ And it does both behind a firewall, because a humanizer is a persuasion amplifie
 
 ## What this version optimizes
 
-The package is built around nine choices:
+Version 3 is calibrated for Claude Sonnet 5 and Claude Opus 4.8, which follow instructions literally, apply stated bars faithfully, and do not silently generalize a rule beyond its stated scope. The package is built around these choices:
 
 - Short invocation metadata, so the model can trigger the skill reliably.
 - Lean `SKILL.md`, so the active instruction layer is clear for both Sonnet and Opus.
-- Deeper references, so the model can inspect examples and diagnostics only when useful.
+- A concrete edit bar in place of qualitative taste. Every tell in the catalog is tagged always-fix, cluster-fix, or context, and a cluster is defined numerically. On models that respect a conservative instruction exactly, "don't over-edit" quietly becomes under-editing; an explicit bar keeps both failure modes out.
+- Coverage before filtering. Cleanup sweeps the whole piece and marks every candidate first; the bar decides what changes second. The model never skips a finding because it guessed the finding was below the bar.
+- Explicit scope on every rule: the whole deliverable, headings, CTAs, captions, and microcopy included, so no rule silently applies to body text only.
+- An output contract, so the reply shape is fixed: deliverable first, a labeled editorial note after it only when needed, and length calibrated to the format rather than to effort.
+- Explicit load triggers for every reference file and the scanner, so a model that favors reasoning over tool calls still reaches for the deeper catalogs at the right moments.
+- Deeper references, so the model inspects examples and diagnostics only when useful.
 - Strong fact safety, so the skill never invents metrics, testimonials, proof, awards, or claims.
 - A substance layer, so de-slopping adds a specific, defensible point instead of leaving clean nothing, always drawn from the true material and never invented.
 - An integrity layer, so the persuasion it adds never outruns the evidence, real caveats survive, and proof, scarcity, urgency, and a real person's words are never faked.
-- Voice preservation, so it improves copy without flattening it into one house style.
+- Voice preservation with a propose-directions move, so it improves copy without flattening it into one house style, and never lets the model's own default voice become the brand's.
 - Translation-ready, so the English template hands off cleanly to `translating-english-to-hungarian` for interpretive, native Hungarian instead of a literal calque.
 - Optional scanner, so long deliverables can be checked for leftover process bleed, wrapper text, empty claims, high-liability claims, and manufactured pressure.
 
@@ -55,7 +60,9 @@ Use `tests/test-prompts.md`. The most important checks:
 5. It preserves a provided voice sample rather than forcing a generic style.
 6. It turns clean-but-empty copy into specific, defensible points instead of swapping hype words for plainer ones.
 7. It never makes a claim more certain than the source, strips a needed caveat, or manufactures reviews, scarcity, or urgency.
-8. With `translating-english-to-hungarian`, it humanizes in English first, passes the register, and leaves placeholders intact for native Hungarian.
+8. It fixes an isolated always-bar item (one dash, one "as discussed," one unsupported figure) even in an otherwise excellent draft, and leaves a lone cluster-bar tell in human prose alone.
+9. Its reply starts with the deliverable and ends with at most a six-line labeled editorial note. No preamble, no commentary around the copy.
+10. With `translating-english-to-hungarian`, it humanizes in English first, passes the register, and leaves placeholders intact for native Hungarian.
 
 ## Optional scanner
 
