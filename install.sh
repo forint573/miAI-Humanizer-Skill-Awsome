@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# install.sh — install The Sonnopus Humanizer skill into a Claude skills folder.
+# install.sh — install the HumanCopywrite skill into a Claude skills folder.
 #
 # Fastest path:
-#   curl -fsSL https://raw.githubusercontent.com/forint573/miAI-Humanizer-Skill-Awesome/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/forint573/human-copywrite/main/install.sh | bash
 #
 # Options (env vars):
 #   SCOPE=user      install to ~/.claude/skills           (default)
@@ -17,8 +17,8 @@
 
 set -euo pipefail
 
-REPO_URL="https://github.com/forint573/miAI-Humanizer-Skill-Awesome.git"
-SKILL_NAME="the-sonnopus-humanizer"
+REPO_URL="https://github.com/forint573/human-copywrite.git"
+SKILL_NAME="human-copywrite"
 REF="${REF:-main}"
 SCOPE="${SCOPE:-user}"
 
@@ -30,7 +30,7 @@ else
   TARGET="${HOME}/.claude/skills"
 fi
 
-echo "The Sonnopus Humanizer installer"
+echo "HumanCopywrite installer"
 echo "  source : ${REPO_URL} (ref: ${REF})"
 echo "  target : ${TARGET}/${SKILL_NAME}"
 echo

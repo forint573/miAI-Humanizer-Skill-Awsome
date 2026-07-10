@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-run_checks.py — automated checks for The Sonnopus Humanizer.
+run_checks.py — automated checks for HumanCopywrite.
 
 Dependency-free (standard library only). Validates the skill package structure
 and exercises the heuristic scanner end-to-end. Exits non-zero on any failure
@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILL_DIR = ROOT / "the-sonnopus-humanizer"
+SKILL_DIR = ROOT / "human-copywrite"
 SCANNER = SKILL_DIR / "scripts" / "copy_scan.py"
 
 failures: list[str] = []
@@ -105,14 +105,24 @@ for ref in ["references/process-bleed.md", "references/substance.md",
     check(f"SKILL.md mentions {ref}", ref in skill_md)
 
 
-# --- 3b. Sonnet 5 / Opus 4.8 calibration structure ----------------------------
-section("Model calibration structure (v3)")
+# --- 3b. Model calibration structure (v4) ------------------------------------
+section("Model calibration structure (v4)")
 
 check("SKILL.md has an output contract", "## The output contract" in skill_md)
 check("SKILL.md has an edit bar", "## The edit bar" in skill_md)
 check("SKILL.md defines the cluster threshold", "150-word span" in skill_md)
 check("SKILL.md has reference load triggers", "## When to load references" in skill_md)
 check("SKILL.md states whole-deliverable scope", "entire deliverable" in skill_md)
+check("SKILL.md has a fact-safety section", "## Fact safety" in skill_md)
+check(
+    "fact safety keeps user specifics and flags them",
+    "list it under `Verify`" in skill_md,
+)
+check("output contract names its exceptions", "Two exceptions" in skill_md)
+check(
+    "scanner instruction is gated on script execution",
+    "When you can execute scripts" in skill_md,
+)
 
 ai_tells_md = (SKILL_DIR / "references" / "ai-tells.md").read_text(encoding="utf-8")
 bar_tags = ai_tells_md.count("**Bar:")

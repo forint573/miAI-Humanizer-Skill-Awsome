@@ -1,4 +1,4 @@
-# Test prompts for The Sonnopus Humanizer
+# Test prompts for HumanCopywrite
 
 Use these after installation to check trigger behavior and output quality.
 
@@ -48,17 +48,17 @@ Expected behavior:
 
 Remove the chat, plan, decision path, and section meta. Rewrite around the reader's problem and the framework's actual value.
 
-### Unsupported proof sample
+### Proof-in-the-draft sample
 
-Input:
+Input (a cleanup request on the user's existing copy):
 
 Our platform cuts onboarding time by 73% and is trusted by leading enterprises.
 
-No source is provided.
+No source is provided beyond the draft itself.
 
 Expected behavior:
 
-Do not keep the 73% or "leading enterprises" as fact. Replace with `[ADD VERIFIED METRIC]` or weaken the claim.
+The 73% is the user's own material: keep it as written and list it under `Verify` in the editorial note; do not delete it or swap it for a placeholder. "Leading enterprises" is an unnamed-authority claim: name the customers, weaken it, use a placeholder like `[ADD NAMED CUSTOMER]`, or cut it. If the user says the draft was AI-generated or its numbers are unverified, or asks for verified-only copy, the 73% becomes `[ADD VERIFIED METRIC]` instead. In no case does the number get stronger or more certain.
 
 ### Clean-nothing sample
 
@@ -80,7 +80,7 @@ No source backs the numbers, the guarantee, or the scarcity.
 
 Expected behavior:
 
-Do not keep "guarantees," "double your income," "50,000 students," or "only 2 spots left" as fact. Persuasion must not outrun evidence: weaken or flag the guarantee, and replace the unverified numbers and the scarcity with placeholders such as `[ADD REAL ENROLLMENT COUNT]` and `[CONFIRM REAL DEADLINE]`. Never fabricate the proof, the result, or the urgency.
+These are high-liability claims and pressure tactics, so keep-and-flag is not enough. Persuasion must not outrun evidence: weaken or mark the income guarantee inline (`[VERIFY CLAIM]` or a qualified rewrite), and mark the scarcity and deadline inline (`[CONFIRM ACTUAL SPOTS]`, `[CONFIRM REAL DEADLINE]`) or cut them. The "50,000 students" figure is proof: keep it under `Verify` or use `[ADD REAL ENROLLMENT COUNT]` if the user says it is unverified. Never fabricate the proof, the result, or the urgency, and never ship a guarantee or countdown as-is without verification.
 
 ### Voice preservation sample
 
@@ -98,13 +98,13 @@ Expected behavior:
 
 The edit bar makes this predictable. The dash is an always-fix item, so it goes (unless an exact quote, stated user preference, or brand voice protects it). The lone formal transition is a cluster-bar item standing alone in specific human prose, so it stays. Everything else is untouched. The output is not a rewrite; it is the same piece with one repair.
 
-### Under-editing trap (isolated always-fix items)
+### Under-editing trap (isolated items far apart)
 
-Input is a strong, specific, human-sounding draft that contains exactly one "as we discussed" clause, one em dash, and one unsupported "97% satisfaction" figure, each in a different paragraph, with no other tells anywhere.
+Input is a strong, specific, human-sounding draft that contains exactly one "as we discussed" clause, one em dash, and one unsourced "97% satisfaction" figure, each in a different paragraph, with no other tells anywhere.
 
 Expected behavior:
 
-Do not wave these through because they are isolated or the draft is otherwise good. All three are always-bar items: the conversation residue is removed, the dash is replaced, and the figure becomes `[ADD VERIFIED METRIC]` or is weakened. The rest of the draft stays as written. The coverage pass finds all three even though they sit far apart; none is skipped because the sweep stopped early.
+Do not wave these through because they are isolated or the draft is otherwise good. The conversation residue is removed and the dash is replaced (both always-bar). The 97% is the user's own draft material: it stays in the copy and appears under `Verify` in the editorial note (placeholder only if the user flagged the draft as unverified). The rest of the draft stays as written. The coverage pass finds all three even though they sit far apart; none is skipped because the sweep stopped early.
 
 ### Output contract check
 

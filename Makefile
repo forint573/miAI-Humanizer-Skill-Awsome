@@ -1,4 +1,4 @@
-SKILL_DIR := the-sonnopus-humanizer
+SKILL_DIR := human-copywrite
 DIST_DIR  := dist
 
 .DEFAULT_GOAL := help
@@ -18,7 +18,7 @@ scan: ## Scan a draft, e.g. make scan FILE=draft.txt
 	python $(SKILL_DIR)/scripts/copy_scan.py "$(FILE)"
 
 .PHONY: build
-build: ## Package dist/the-sonnopus-humanizer.skill
+build: ## Package dist/human-copywrite.skill
 	bash scripts/build_skill.sh
 
 .PHONY: clean

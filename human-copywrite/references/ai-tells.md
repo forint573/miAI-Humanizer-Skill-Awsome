@@ -8,7 +8,7 @@ Every item below carries a bar tag, so the decision is mechanical, not a mood:
 - **Bar: cluster.** Fix when part of a cluster; leave a lone instance in otherwise specific human prose. A cluster is two or more catalog tells inside one paragraph, or three or more within any 150-word span.
 - **Bar: context.** Not a tell on its own. Act only on the condition named in the item.
 
-Two overrides sit above the tags. A provided voice sample or brand style can override cluster-bar and context-bar items it demonstrably uses; it never overrides an always-bar item that exists for process, fact, or integrity reasons. And fact safety outranks everything: an unsupported specific inside any pattern is always fixed, whatever the tag says.
+Two overrides sit above the tags. A provided voice sample or brand style can override cluster-bar and context-bar items it demonstrably uses; it never overrides an always-bar item that exists for process, fact, or integrity reasons. And fact safety outranks everything: a specific inside any pattern is never invented or strengthened, whatever the tag says — a missing specific becomes a placeholder, and a kept one is flagged per SKILL.md's fact-safety rule.
 
 Every fix here removes something, and removing is only half the job. A cut tell leaves a gap. A gap filled with a cleaner version of nothing is still nothing. When you cut, replace with the specific true thing, not sanitized emptiness. The diagnosis lives here; what to put in the gap lives in `references/substance.md`. Item 33 is the trap to watch for.
 
@@ -155,10 +155,9 @@ Lists where each item is a bold header + colon + a sentence that restates it.
 - After: "The update speeds up load times and adds end-to-end encryption."
 
 ### 17. Title Case in headings
-**Bar: always.** Normalize every heading to sentence case unless a provided brand style says otherwise.
-Capitalizing every main word in a heading.
-- Before: "## Strategic Negotiations And Global Partnerships"
-- After: "## Strategic negotiations and global partnerships"
+**Bar: context.** Title Case is a legitimate human convention in plenty of marketing copy, so it is not a tell on its own. Follow the provided brand style first; otherwise match the piece's dominant heading convention and fix only inconsistency (AI drafts often mix the two styles). When drafting fresh with no signal either way, default to sentence case.
+- Before (mixed in one piece): "## Strategic Negotiations And Global Partnerships" alongside "## What buyers actually ask"
+- After: pick the piece's dominant convention and apply it to every heading.
 
 ### 18. Decorative emoji
 **Bar: always** in final marketing copy, unless the provided brand voice demonstrably uses them.

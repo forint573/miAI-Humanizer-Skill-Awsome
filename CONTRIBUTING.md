@@ -1,4 +1,4 @@
-# Contributing to The Sonnopus Humanizer
+# Contributing to HumanCopywrite
 
 Thanks for your interest in improving this skill. It is a small,
 documentation-heavy project, so contributing is mostly about clear writing
@@ -21,7 +21,8 @@ and good judgment rather than large code changes.
 These are the reasons the skill exists. Please don't regress them:
 
 1. **Never fabricate.** No invented numbers, names, testimonials, results, or
-   claims. Missing proof becomes a visible placeholder.
+   claims. Missing proof becomes a visible placeholder, and the user's own
+   specifics are kept and flagged for verification, not deleted.
 2. **Don't flatten voice.** A provided sample or brand voice always wins over
    the skill's default taste.
 3. **Keep `SKILL.md` lean.** It is the active instruction layer. Deep material
@@ -37,7 +38,7 @@ The scanner targets Python 3.8+ and uses only the standard library.
 
 ```bash
 make check     # run all automated checks (skill structure + scanner)
-make build     # package dist/the-sonnopus-humanizer.skill
+make build     # package dist/human-copywrite.skill
 make clean     # remove build artifacts
 ```
 

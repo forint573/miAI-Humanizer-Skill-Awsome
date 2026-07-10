@@ -1,9 +1,84 @@
 # Changelog
 
-All notable changes to The Sonnopus Humanizer are documented here.
+All notable changes to HumanCopywrite (formerly The Sonnopus Humanizer) are
+documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [4.0.0] - 2026-07-10
+
+The rename, harm-audit, and Fable 5 release. The skill is now **HumanCopywrite**
+(skill name `human-copywrite`, folder `human-copywrite/`). An audit of how the v3
+rules land on literal-instruction models (Sonnet 5, Opus 4.8) found several
+places where the skill could do more harm than good; this release fixes them.
+It also extends the calibration to Claude Fable 5, whose published migration
+guidance warns that over-prescriptive prompts and skills reduce output quality,
+which is why the active layer got lighter rather than longer.
+
+### Changed
+- **Renamed** the skill to HumanCopywrite: folder `human-copywrite/`, frontmatter
+  name `human-copywrite`, and all install paths, build artifacts
+  (`dist/human-copywrite.skill`), CI artifact names, and docs updated to match.
+- **Fact safety now distinguishes origin.** Specifics the model would have to
+  invent still become visible placeholders. But an ordinary specific already in
+  the user's draft (a metric, named customer, certification) is *kept as
+  written* and listed under `Verify` in the editorial note, instead of being
+  deleted into `[ADD VERIFIED METRIC]`. Placeholders replace draft specifics
+  only when the draft marks them as unsettled (TODOs, scaffold notes), the user
+  says the draft's facts are unverified or AI-generated, or the user asks for
+  verified-only copy. Previously a literal model would nuke the user's own real
+  numbers "to be safe," destroying their material. High-liability claims and
+  pressure tactics (guarantees; medical, financial, legal claims; income
+  results; scarcity and deadlines) are the exception: those are weakened,
+  qualified, or marked inline regardless of origin, and never ship on a Verify
+  note alone.
+- **The output contract names its two honest exceptions**: proposing voice
+  directions before drafting (previously the contract and the voice-calibration
+  move contradicted each other, which is exactly the kind of conflict that
+  makes a literal model unpredictable), and file-based deliverables in agent or
+  editor workflows (the contract governs the file's contents; the chat reply
+  follows the harness's norms).
+- **Title Case in headings demoted from always-fix to context.** Title Case is
+  a legitimate human convention in a lot of marketing copy; forcing sentence
+  case everywhere was over-editing. The rule now follows the brand style,
+  otherwise the piece's dominant convention, and fixes only inconsistency.
+- **The scanner instruction is gated on script execution being available**, so
+  the skill neither stalls nor claims a scan ran in environments without a
+  shell.
+- **`SKILL.md` went from ~23.5KB to ~16KB** by stating each rule once instead
+  of re-deriving it per section, moving worked examples to `references/`, and
+  compressing the workflows to goals plus hard constraints. The frontmatter
+  description was cut by roughly a third (it is loaded in every conversation,
+  triggering or not) while keeping all trigger phrases and the scope line.
+- **`references/ai-tells.md` loads by length trigger** (cleanups over roughly
+  300 words, or when a tell is hard to tag) instead of on every cleanup pass,
+  since the always-fix and cluster lists in `SKILL.md` already cover short
+  snippets.
+- Root README rebuilt around the three-model calibration, with operator
+  settings verified against Anthropic's current model documentation: effort
+  defaults to `high` on all three; Sonnet 5 runs adaptive thinking by default;
+  Opus 4.8 needs `thinking: {type: "adaptive"}` set explicitly; Fable 5 has
+  thinking always on and rejects an explicit disabled config, so the parameter
+  is simply omitted; Sonnet 5's tokenizer produces roughly 30% more tokens
+  while Fable 5 and Opus 4.8 share one tokenizer.
+- Tests updated to the new fact-safety behavior: the unsupported-proof sample
+  became a proof-in-the-draft sample (keep + Verify, placeholder only when
+  flagged unverified), and the under-editing trap now expects the user's figure
+  to survive with a Verify flag rather than be replaced.
+
+### Added
+- `tests/run_checks.py`: v4 structure checks (fact-safety section present,
+  keep-and-flag language present, output-contract exceptions named, scanner
+  gated on execution availability).
+
+### Kept
+- The entire v3 calibration that works: the three-level edit bar with its
+  numeric cluster threshold, coverage-before-filtering cleanup, whole-
+  deliverable scope, the labeled editorial note, named reference load triggers,
+  the substance and integrity layers, voice preservation with the
+  propose-directions move, the dash default, and the Hungarian translation
+  handoff.
 
 ## [3.0.1] - 2026-07-03
 
@@ -193,6 +268,7 @@ First public release.
 - Repository scaffolding: Apache-2.0 LICENSE, NOTICE, CONTRIBUTING,
   CODE_OF_CONDUCT, build script, automated checks, and CI.
 
-[3.0.1]: https://github.com/forint573/miAI-Humanizer-Skill-Awesome/releases/tag/v3.0.1
-[2.0.0]: https://github.com/forint573/miAI-Humanizer-Skill-Awesome/releases/tag/v2.0.0
-[1.0.0]: https://github.com/forint573/miAI-Humanizer-Skill-Awesome/releases/tag/v1.0.0
+[4.0.0]: https://github.com/forint573/human-copywrite/releases/tag/v4.0.0
+[3.0.1]: https://github.com/forint573/human-copywrite/releases/tag/v3.0.1
+[2.0.0]: https://github.com/forint573/human-copywrite/releases/tag/v2.0.0
+[1.0.0]: https://github.com/forint573/human-copywrite/releases/tag/v1.0.0

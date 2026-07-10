@@ -3,12 +3,12 @@
 # build_skill.sh — package the skill into a distributable .skill archive.
 #
 # A .skill file is a zip archive with the skill folder at its root. This script
-# produces dist/the-sonnopus-humanizer.skill from the source folder, excluding
+# produces dist/human-copywrite.skill from the source folder, excluding
 # build cruft so the package stays clean.
 
 set -euo pipefail
 
-SKILL_DIR="the-sonnopus-humanizer"
+SKILL_DIR="human-copywrite"
 DIST_DIR="dist"
 OUTPUT="${DIST_DIR}/${SKILL_DIR}.skill"
 
