@@ -1,6 +1,6 @@
 <div align="center">
 
-# HumanCopywrite ✸☽
+# Humanlike Copywriter Skill
 
 (agent built stuff)
 
