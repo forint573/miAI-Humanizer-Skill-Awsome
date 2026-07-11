@@ -177,7 +177,7 @@ Re-read the complete deliverable from first line to last and check every item ag
 ## References
 
 - `references/process-bleed.md`: the eight leaks, examples, fast-scan phrases.
-- `references/website-copy.md`: the source sheet, the transcript-transplant fix, page patterns.
+- `references/website-copy.md`: the source sheet, the transcript-transplant fix, framework selection by reader awareness, page patterns.
 - `references/substance.md`: the intelligence layer, with tests and worked examples.
 - `references/integrity.md`: the do-more-good-than-harm layer.
 - `references/ai-tells.md`: the tell catalog, every item tagged with its edit-bar level.

@@ -29,6 +29,17 @@ The chat, the brief, the codebase, and the README are material to mine, never a 
 
 Write from the sheet. An empty slot becomes a visible placeholder, never a guess. Section order comes from the reader's questions (What is this? Will it work for me? Can I trust it? What now?), never from the session's timeline. If MY_OWN_VOICE.md exists in the project, its Reader, Product truth, and Verified proof sections pre-fill the sheet.
 
+## Match the structure to reader awareness
+
+Not every page starts from the same place. A reader who has never considered the problem needs a different shape than one comparing named competitors. Pick the frame from where the reader already stands, then fill it from the source sheet above; this changes pacing and order, never the truthfulness rules.
+
+- Unaware (doesn't yet know they have the problem): Picture the situation, Promise the outcome, Proof it's real, Push toward the next step.
+- Problem aware (feels the pain, has no solution in mind): Problem, Agitate the cost of leaving it unsolved, Solution.
+- Solution aware (knows solutions exist, not this product): Before, After, Bridge, the mechanism that closes the gap.
+- Product aware (knows this product, deciding whether to act): Attention, Interest, Desire, Action, compressed, since the case is mostly already made.
+
+A PPPP page for an unaware reader still cannot invent a proof point it lacks; it just spends more of the page building the picture before it earns the right to ask for proof. When the brief does not say which stage the reader is at, default to the reader-questions order above (What is this? Will it work for me? Can I trust it? What now?), which reads correctly for the problem-aware or solution-aware reader, the most common case for a homepage.
+
 ## Page patterns
 
 Hero: the headline carries the reader's value, not the product's category. The subhead names the mechanism. One CTA, one action.
