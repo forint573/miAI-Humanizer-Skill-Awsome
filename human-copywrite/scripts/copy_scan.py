@@ -34,6 +34,11 @@ PATTERNS = {
         r"\b(we decided|we landed on|we considered|after careful consideration|what emerged was|the chosen approach)\b",
         r"\b(we started by|first we|next we|moving into the next phase|finally we arrive|building on (this|that))\b",
         r"\b(through extensive research|carefully crafted|countless hours|our commitment to)\b",
+        # Transcript transplant: session narration shipped as site copy.
+        # "we built X" alone is legitimate founder copy; a sequence marker
+        # in front of it ("then we added...") is session chronology.
+        r"\b(first|then|next|so) we (built|added|created|implemented|wrote|wired(?: up)?|shipped)\b",
+        r"\b(in|during) (this|our) (session|chat|conversation)\b",
     ],
     # Assistant wrapper: correspondence pasted into the deliverable.
     # Tightened so a real sentence like "Here is a verified interpreter" does NOT match;

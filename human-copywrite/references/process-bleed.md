@@ -28,7 +28,9 @@ Effort padding and self-praise: "through extensive research," "carefully crafted
 
 Delivery wrapper: "here is the copy," "below is the draft," "I hope this helps," "let me know if you'd like."
 
-## Seven leak types
+Session narration: "we built," "then we added," "in this session," "the version we ended up with," features listed in the order they were implemented.
+
+## Eight leak types
 
 ### 1. Roadmap narration
 
@@ -85,6 +87,14 @@ Before: This definitive, carefully crafted guide gives you everything you need t
 After: Cut it, or replace it with a concrete benefit the guide actually delivers.
 
 Why: Let the usefulness of the copy earn trust.
+
+### 8. Transcript transplant
+
+Before: Relay is a webhook debugging tool we built to solve this exact problem. We started with delivery inspection so you can see every payload, then added retry timelines, and finally wired up Slack alerts.
+
+After: Your webhook failed at 3 a.m. and the customer noticed first. Relay shows every delivery attempt, the exact payload, and why it failed, and pings your Slack the moment an endpoint starts erroring.
+
+Why: This is the whole-page form of process bleed and the most common way AI botches website copy written at the end of a working session. The chat is material to mine for facts, never a manuscript to edit. The tell is chronology: sections ordered by when things were built or discussed instead of by the reader's questions. Full treatment and the source sheet: `references/website-copy.md`.
 
 ## Boundary cases
 

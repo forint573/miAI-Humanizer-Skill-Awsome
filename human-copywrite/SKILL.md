@@ -1,6 +1,6 @@
 ---
 name: human-copywrite
-description: "Write, finalize, or clean up reader-facing marketing and long-form copy (landing pages, sales pages, e-books, reports, case studies, product and email copy, founder notes) so it reads like a specific human wrote it and says something worth reading. Use when asked to humanize, de-slop, make less AI-sounding, rewrite naturally, tighten, polish, sharpen, clean up, or finalize a copy deliverable, and proactively when finalizing one. Removes process bleed and AI tells, keeps the user's facts and voice, never invents proof or makes a claim more certain than the source supports. Not for code, data, changelogs, release notes, legal terms, technical reference docs, or casual chat."
+description: "Write, finalize, or clean up reader-facing marketing and long-form copy (landing pages, sales pages, e-books, reports, case studies, product and email copy, founder notes) so it reads like a specific human wrote it and says something worth reading. Use when asked to humanize, de-slop, make less AI-sounding, rewrite naturally, tighten, polish, sharpen, clean up, or finalize copy, when asked to write the website, homepage, or landing-page copy for something built or discussed in the session, and proactively when finalizing a copy deliverable. Supports per-project voice: on 'set up my voice' or a setup argument it interviews the user and writes MY_OWN_VOICE.md, then matches it. Writes from product facts and never outputs chat history as copy, keeps the user's facts and voice, never invents proof or makes a claim more certain than the source supports. Not for code, data, changelogs, release notes, legal terms, technical reference docs, or casual chat."
 ---
 
 # HumanCopywrite
@@ -21,7 +21,7 @@ Every rule below applies to the entire deliverable: body, headlines, subheads, b
 - Finalization: turn a planned or half-built artifact into a clean template. Strip scaffolding, planning residue, and wrapper text.
 - Cleanup: improve an existing draft. Preserve meaning, claims, caveats, sections, and proportions unless asked for a deeper rewrite.
 
-Use the lightest mode that solves the task; the edit bar defines exactly what the lightest sufficient edit is.
+Use the lightest mode that solves the task; the edit bar defines exactly what the lightest sufficient edit is. The invoking prompt owns the task, format, and constraints; this skill supplies the craft and the guardrails, never a competing agenda. If `MY_OWN_VOICE.md` exists in the project root (or `.claude/`), read it before starting: it carries the project's voice, reader, product truth, verified proof, and bans (see Voice).
 
 ## The output contract
 
@@ -46,7 +46,7 @@ Work in two passes. Coverage first: read the entire piece to the last line and m
 
 Always fix, even a single instance anywhere in the piece:
 
-- Process bleed of any kind (the seven leaks below), assistant wrapper, and signposting.
+- Process bleed of any kind (the eight leaks below), assistant wrapper, and signposting.
 - A specific you would otherwise have to invent (a number, name, quote, testimonial, or result the source does not supply): use a visible placeholder such as `[ADD VERIFIED METRIC]`, never a plausible guess.
 - Certainty inflated past the source, a dropped load-bearing caveat, or manufactured proof, scarcity, or urgency.
 - High-liability claims and pressure tactics already in the draft (guarantees; medical, financial, or legal claims; income results; scarcity and deadlines): weaken, qualify, or mark inline with `[VERIFY CLAIM]` / `[CONFIRM THIS DEADLINE]`. These never ship on a Verify note alone.
@@ -62,9 +62,19 @@ Leave alone, even when you notice it:
 
 - A single cluster-bar tell in an otherwise specific, human paragraph.
 - Anything a provided voice sample demonstrably does: punctuation habits, formality, regional spelling, favorite constructions.
+- Genuine asides, self-corrections, mixed feelings, and era-bound references. These are human signals, not defects.
 - The inside of quotation marks. Never edit a quote to satisfy a style rule.
 
 A provided voice sample or brand style can override cluster-bar style items. It never overrides an always-bar item that exists for process, fact, or integrity reasons.
+
+The moves in miniature, one example per family:
+
+- Transcript: "We built Relay to solve this, starting with delivery inspection, then adding Slack alerts." → "Your webhook failed at 3 a.m. Relay shows which attempt, what payload, and why, and pings your Slack."
+- Wrapper: "Here is the revised landing page copy you asked for. Let me know what you think!" → delete; ship only the copy.
+- Empty claim: "We are committed to delivering excellence for our clients." → "Support answers in under an hour, nights included, or your next month is free."
+- Inflated certainty: "Eliminates onboarding errors" (source said "may reduce") → "Designed to reduce onboarding errors. `[ADD MEASURED RESULT]`"
+- Style tail: "The dashboard updates live, empowering teams and streamlining workflows." → "The dashboard updates live. You see the number move while the campaign runs."
+- Dash: "One tool — every webhook." → "One tool for every webhook."
 
 ## Fact safety
 
@@ -78,7 +88,13 @@ Apply the sentence test to every sentence, headings and CTAs included:
 
 > Would this sentence make sense to a reader who never saw the project, chat, plan, outline, prompt, or drafting process?
 
-If not, cut it or rewrite it around the reader, product, offer, proof, objection, or next step. The seven leaks: roadmap narration, artifact meta ("in this guide," "this section explores"), conversation residue ("as discussed," "per your request"), decision disclosure ("we landed on"), effort padding ("after extensive research"), scaffold residue (phases, TODOs, outline labels), and self-praise ("comprehensive," "carefully crafted"). Full examples and fast-scan phrases: `references/process-bleed.md`.
+If not, cut it or rewrite it around the reader, product, offer, proof, objection, or next step. The eight leaks: roadmap narration, artifact meta ("in this guide," "this section explores"), conversation residue ("as discussed," "per your request"), decision disclosure ("we landed on"), effort padding ("after extensive research"), scaffold residue (phases, TODOs, outline labels), self-praise ("comprehensive," "carefully crafted"), and the transcript transplant (below). Full examples and fast-scan phrases: `references/process-bleed.md`.
+
+## Website prose: source, not transcript
+
+Asked for site copy at the end of a working session, never output the session. The chat, the codebase, and the README are material to mine for facts, not a manuscript to edit; narrating what "we built," in the order it was built, is the transcript transplant, the whole-page form of process bleed. The tell is chronology: sections that mirror the build order instead of the reader's questions (What is this? Will it work for me? Can I trust it? What now?).
+
+Instead, fill the source sheet from whatever context exists, then write from the sheet: reader, problem, product in one sentence, mechanism, verified proof, main objection, next step. An empty slot becomes a visible placeholder, never a guess. `MY_OWN_VOICE.md`, if present, pre-fills reader, product truth, and proof. Page patterns (hero, features with "so that" chains, proof, FAQ, About, pricing) and the worked transplant example: `references/website-copy.md`.
 
 ## Make it worth reading
 
@@ -104,7 +120,7 @@ The standard: a reader who trusts this copy because it is clear and human should
 
 ## Human prose and dashes
 
-Specific beats generic; use the source's real names, numbers, mechanics, and tradeoffs. Vary rhythm: mix short sentences with longer ones. Plain beats inflated: prefer is, has, does, gives, costs, saves over serves as, boasts, leverages, facilitates, underscores.
+Specific beats generic; use the source's real names, numbers, mechanics, and tradeoffs. Vary rhythm at both levels: mix short sentences with longer ones, and vary paragraph weight too; uniform mid-length cadence and sustained staccato fragments are both tells. Plain beats inflated: prefer is, has, does, gives, costs, saves over serves as, boasts, leverages, facilitates, underscores. Read it aloud in your head; if you would not say the sentence to a colleague, rewrite it.
 
 No em or en dashes anywhere in final copy: body, headings, bullets, CTAs, and captions alike. Replace each with a period, comma, colon, parentheses, or a restructured sentence. A single dash gets fixed. Keep one only inside an exact quotation, on explicit user preference, or in an established brand voice; never misquote a source to satisfy this rule.
 
@@ -114,11 +130,13 @@ A provided writing sample, brand voice, or style guide beats this skill's defaul
 
 When the piece is voice-sensitive, no sample exists, and the user can answer: offer two or three one-line voice directions (a posture plus the opening line rewritten in it) and build only the chosen one. When immediate output was requested, write in the grounded default and name the direction taken in the editorial note. Full move: `references/voice-calibration.md`.
 
+Project voice. When the user invokes the skill with a setup argument (`/human-copywrite setup`) or asks to set up their voice or brand voice, run the interview in `references/voice-setup.md` and write `MY_OWN_VOICE.md` to the project root. On every later copy task in that project, load the file: its samples count as the provided voice sample, its verified proof may be stated as fact, its bans are always-fix, its caveats survive every edit. It overrides taste, never the integrity layer.
+
 ## Working through a piece
 
 Substance and integrity work is multi-step reasoning: before writing or rewriting, think through who the reader is, the real question under the stated one, the so-what ladder, and which claims the evidence can carry. Mechanical cleanup of a short piece needs no deep pass; make the edits directly.
 
-Drafting or finalization: identify the reader, product, offer, proof, main objection, and next step; think first; write the deliverable only, to the format's natural length; sweep the whole draft against the sentence test, the edit bar, fact safety, voice, and the dash rule; run the harm check; deliver per the contract.
+Drafting or finalization: fill the source sheet (reader, problem, product, mechanism, proof, objection, next step); think first; write the deliverable only, to the format's natural length; sweep the whole draft against the sentence test, the edit bar, fact safety, voice, and the dash rule; run the harm check; deliver per the contract.
 
 Cleanup: coverage pass over the whole piece; bar pass; rewrite preserving meaning, claims, caveats, and proportions; sharpen or flag surviving clean-nothing sections; re-read the result against the checklist below; deliver per the contract, noting any structural removals in the editorial note.
 
@@ -127,6 +145,8 @@ Cleanup: coverage pass over the whole piece; bar pass; rewrite preserving meanin
 Load each file at the moment its trigger appears, not preemptively and not never:
 
 - `references/ai-tells.md`: before the bar pass on any cleanup longer than roughly 300 words, and whenever you are unsure how to tag a tell. For short snippets the bar lists above suffice.
+- `references/website-copy.md`: before writing or restructuring website or page copy, especially copy requested at the end of a working session.
+- `references/voice-setup.md`: when the user asks to set up their voice or invokes the skill with a setup argument.
 - `references/substance.md`: before rewriting a piece judged clean but empty, and before drafting from a thin brief.
 - `references/integrity.md`: when an edit would make a claim more convincing, when copy touches health, money, safety, or legal territory, or when scarcity, urgency, or social proof appears.
 - `references/process-bleed.md`: when bleed survives a first pass or the piece heavily narrates itself.
@@ -144,21 +164,24 @@ When the output must be Hungarian, humanize in English first, then chain to `tra
 
 Re-read the complete deliverable from first line to last and check every item against every section, headings and CTAs included; fix any failure and re-check that item:
 
-- No sentence refers to the chat, request, plan, outline, internal decisions, or drafting process.
+- No sentence refers to the chat, request, plan, outline, internal decisions, or drafting process, and no section order mirrors the session's timeline.
 - Every paragraph serves the reader's situation, the product, the offer, proof, an objection, or the next step.
 - No section is clean nothing; the strongest lines pass the swap and negation tests.
 - No specific was invented or strengthened; missing ones are visible placeholders, and kept load-bearing claims are listed under Verify.
 - No claim is more certain, proven, or universal than the source supports; every safety, legal, or financial caveat is intact; no proof, scarcity, or urgency was manufactured.
 - The voice matches the sample or the format, everywhere in the piece.
 - Em and en dashes are gone unless a stated exception applies.
+- Read the finished piece cold, once, and ask: what would still make a reader clock this as AI? Fix what you find.
 - The reply follows the output contract: deliverable first, labeled note after only if needed, nothing else.
 
 ## References
 
-- `references/process-bleed.md`: the seven leaks, examples, fast-scan phrases.
+- `references/process-bleed.md`: the eight leaks, examples, fast-scan phrases.
+- `references/website-copy.md`: the source sheet, the transcript-transplant fix, page patterns.
 - `references/substance.md`: the intelligence layer, with tests and worked examples.
 - `references/integrity.md`: the do-more-good-than-harm layer.
 - `references/ai-tells.md`: the tell catalog, every item tagged with its edit-bar level.
+- `references/voice-setup.md`: the MY_OWN_VOICE.md interview, template, and loading rules.
 - `references/qa-scorecard.md`: score finished copy before shipping.
 - `references/voice-calibration.md`: voice matching and the propose-directions move.
 - `references/translation-handoff.md`: chaining with `translating-english-to-hungarian`.

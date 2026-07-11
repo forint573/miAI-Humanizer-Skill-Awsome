@@ -10,6 +10,9 @@ And it does both behind a firewall, because a humanizer is a persuasion amplifie
 
 Version 4 runs on Claude Sonnet 5, Claude Opus 4.8, and Claude Fable 5. The package is built around these choices:
 
+- The transcript rule for website prose. Site copy requested at the end of a working session is written from a source sheet (reader, problem, product, mechanism, proof, objection, next step) mined from the context, never by narrating the session; section order follows the reader's questions, not the build timeline. `references/website-copy.md` carries the page patterns.
+- Per-project voice. A setup argument (`/human-copywrite setup`) or "set up my voice" runs a six-question interview and writes `MY_OWN_VOICE.md` to the project root; every later copy task in the project loads it. `references/voice-setup.md` carries the interview and template.
+- Example-first steering. The instruction layer shows one compact before/after per fix family, and the final checklist ends with a cold read asking what would still make a reader clock the piece as AI.
 - A lean `SKILL.md`, so the active instruction layer stays light in context. Anthropic's own guidance for its strongest current models is that over-prescriptive prompts and skills reduce output quality, so the instruction layer states goals and hard bars instead of enumerating micro-steps. The deep catalogs live in `references/` and load on named triggers.
 - A concrete edit bar in place of qualitative taste. Every tell is tagged always-fix, cluster-fix (two tells in a paragraph, or three per 150 words), or context. On models that follow a conservative instruction exactly, "don't over-edit" quietly becomes under-editing; a bar keeps both failure modes out.
 - Coverage before filtering. Cleanup sweeps the whole piece and marks every candidate first; the bar decides what changes second.
@@ -48,8 +51,9 @@ Upload the package where custom Claude skills are supported. The archive keeps t
 
 Use `tests/test-prompts.md`. The most important checks:
 
-1. It triggers for landing pages, e-books, reports, product copy, and humanizing requests.
+1. It triggers for landing pages, e-books, reports, product copy, humanizing requests, "write the homepage for what we built," and voice setup.
 2. It does not trigger for code, raw data, legal terms, changelogs, or casual chat.
+3. Asked for site copy after a working session, it writes from the product facts in the reader's order and never narrates the session.
 3. It never invents facts; missing proof becomes a visible placeholder.
 4. It keeps specifics from the user's own draft and flags load-bearing ones under `Verify`, instead of deleting them into placeholders.
 5. It removes process bleed without deleting real meaning.

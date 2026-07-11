@@ -251,6 +251,9 @@ High-signal structures that bleed into web and email copy. (Full LinkedIn-specif
 - **Runway sentence:** a vague hype line before the actual detail. Cut the runway, start with the substance.
 - **Product-tagline phrasing in prose:** compact feature-copy fragments ("Built for scale," "Hands-free until review") dropped mid-paragraph. Write them as sentences a person would say.
 - **Fake-fascination opener:** "Interestingly," "What's fascinating is," "It's worth noting that" placed in front of an ordinary point to manufacture intrigue. Cut the opener and make the point directly.
+- **Fake-candid opener:** "Honestly?" "Look," "Here's the thing," "Real talk" staged as a theatrical pause before a routine claim. Say the point without the candor costume.
+- **Aphorism formula:** "X is the Y of Z," "attention is the new currency," "X becomes a trap." A borrowed-profundity template. Replace with the concrete, specific claim underneath it.
+- **Sustained staccato:** three or more clipped fragments in a row for manufactured drama. One short emphatic sentence lands; a burst of them reads as generated. Fold some back into full sentences.
 - **Wonder-framing:** "there is a specific kind of magic that happens when," "a love letter to," "the energy in the room." Vague awe that names nothing concrete. Describe the actual experience instead.
 
 ### 33. Clean nothing (the de-slop trap)

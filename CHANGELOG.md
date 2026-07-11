@@ -6,6 +6,63 @@ documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2026-07-11
+
+The human-copywriter release: the skill stops being only a de-slopper and
+learns to write. Three new capabilities, one leak type, and a much lighter
+README. Some catalog additions were adapted from studying
+[blader/humanizer](https://github.com/blader/humanizer) (MIT), credited with
+thanks.
+
+### Added
+- **The transcript rule and `references/website-copy.md`.** The most common
+  way AI botches website copy is not style but source: asked for a homepage at
+  the end of a working session, it narrates the session ("we built X, then
+  added Y") in build order. The skill now treats the chat, codebase, and
+  README as material to mine, never a manuscript to edit: it fills a source
+  sheet (reader, problem, product, mechanism, proof, objection, next step) and
+  writes from that, ordered by the reader's questions. "Transcript transplant"
+  is now the eighth leak type in `references/process-bleed.md`, always-fix,
+  with a worked Relay example. `website-copy.md` adds the page craft: value
+  headlines over category headlines, "so that" feature chains, proof and FAQ
+  and About and pricing patterns, and skimmability rules.
+- **Per-project voice via `MY_OWN_VOICE.md` and `references/voice-setup.md`.**
+  `/human-copywrite setup` (or "set up my voice for this project") runs a
+  single batched six-question interview: samples, reader, product plus
+  mechanism, verified proof, posture and bans, practical details. The answers
+  are written to `MY_OWN_VOICE.md` in the project root from a fixed template,
+  and every later copy task in the project loads the file: samples act as the
+  provided voice sample, verified proof may be stated as fact without
+  placeholders, bans are always-fix, caveats survive every edit. The file
+  overrides the skill's taste and never the integrity layer.
+- **Example-first steering in `SKILL.md`.** A "moves in miniature" block gives
+  one compact before/after pair per fix family (transcript, wrapper, empty
+  claim, inflated certainty, style tail, dash), because examples anchor
+  models better per token than abstract description. Plus a read-aloud line, a
+  paragraph-rhythm line, and a final cold-read audit item: read the finished
+  piece once and ask what would still make a reader clock it as AI.
+- **Catalog additions** (item 32): the fake-candid opener ("Honestly?"
+  "Here's the thing"), the aphorism formula ("X is the Y of Z"), and
+  sustained staccato; and one leave-alone line naming human signals to
+  preserve (genuine asides, self-corrections, mixed feelings, era-bound
+  references).
+- **Scanner**: session-narration patterns (sequence marker + build verb, "in
+  this session") flag transcript transplants; a new automated check exercises
+  them.
+- `tests/`: a transcript-transplant evaluation sample, a voice-setup sample,
+  two new should-trigger prompts, and structure checks for the new reference
+  files, the eight-leak count, the source sheet, and the MY_OWN_VOICE wiring.
+
+### Changed
+- **Root README cut to roughly a third of its size.** It now says what the
+  skill is, how to install and trigger it, what is specific about it (one
+  line per element), how MY_OWN_VOICE.md works, and the model settings, and
+  moves everything else into the skill package.
+- `SKILL.md` description now names the website-copy trigger ("write the
+  homepage for what we built") and the voice-setup trigger, and states the
+  compatibility rule: the invoking prompt owns the task and format, the skill
+  supplies the craft and guardrails.
+
 ## [4.0.0] - 2026-07-10
 
 The rename, harm-audit, and Fable 5 release. The skill is now **HumanCopywrite**
@@ -268,6 +325,7 @@ First public release.
 - Repository scaffolding: Apache-2.0 LICENSE, NOTICE, CONTRIBUTING,
   CODE_OF_CONDUCT, build script, automated checks, and CI.
 
+[4.1.0]: https://github.com/forint573/human-copywrite/releases/tag/v4.1.0
 [4.0.0]: https://github.com/forint573/human-copywrite/releases/tag/v4.0.0
 [3.0.1]: https://github.com/forint573/human-copywrite/releases/tag/v3.0.1
 [2.0.0]: https://github.com/forint573/human-copywrite/releases/tag/v2.0.0

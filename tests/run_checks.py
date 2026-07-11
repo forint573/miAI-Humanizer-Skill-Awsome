@@ -62,6 +62,8 @@ expected_files = [
     SKILL_DIR / "SKILL.md",
     SKILL_DIR / "README.md",
     SKILL_DIR / "references" / "process-bleed.md",
+    SKILL_DIR / "references" / "website-copy.md",
+    SKILL_DIR / "references" / "voice-setup.md",
     SKILL_DIR / "references" / "substance.md",
     SKILL_DIR / "references" / "integrity.md",
     SKILL_DIR / "references" / "ai-tells.md",
@@ -98,7 +100,8 @@ check(
 # --- 3. Referenced files actually exist -------------------------------------
 section("Internal references resolve")
 
-for ref in ["references/process-bleed.md", "references/substance.md",
+for ref in ["references/process-bleed.md", "references/website-copy.md",
+            "references/voice-setup.md", "references/substance.md",
             "references/integrity.md", "references/ai-tells.md",
             "references/qa-scorecard.md", "references/voice-calibration.md",
             "references/translation-handoff.md", "scripts/copy_scan.py"]:
@@ -123,6 +126,19 @@ check(
     "scanner instruction is gated on script execution",
     "When you can execute scripts" in skill_md,
 )
+check(
+    "SKILL.md teaches the transcript-transplant rule",
+    "transcript transplant" in skill_md,
+)
+check("SKILL.md has the source sheet", "source sheet" in skill_md)
+check("SKILL.md wires MY_OWN_VOICE.md", "MY_OWN_VOICE.md" in skill_md)
+
+pb_md = (SKILL_DIR / "references" / "process-bleed.md").read_text(encoding="utf-8")
+check("process-bleed has eight leak types", "Eight leak types" in pb_md)
+check("process-bleed includes the transcript transplant", "Transcript transplant" in pb_md)
+
+voice_setup_md = (SKILL_DIR / "references" / "voice-setup.md").read_text(encoding="utf-8")
+check("voice-setup carries the MY_OWN_VOICE template", "# MY_OWN_VOICE" in voice_setup_md)
 
 ai_tells_md = (SKILL_DIR / "references" / "ai-tells.md").read_text(encoding="utf-8")
 bar_tags = ai_tells_md.count("**Bar:")
@@ -206,6 +222,21 @@ check("flags manufactured pressure", risky_summary.get("manufactured_pressure", 
 check(
     "harm warnings name the remedy",
     ("verify" in risky_warnings or "liability" in risky_warnings) and "scarcity" in risky_warnings,
+)
+
+
+# --- 5d. Scanner flags session narration (transcript transplant) -------------
+section("Scanner flags session narration")
+
+transplant = (
+    "Then we added Slack alerts so the team gets notified. In this session we "
+    "built the retry timeline view and polished the dashboard."
+)
+transplant_result = run_scanner(transplant)
+check(
+    "flags session narration as process bleed",
+    transplant_result["summary"].get("process_bleed", 0) >= 2,
+    f"hits={transplant_result['summary'].get('process_bleed', 0)}",
 )
 
 

@@ -24,6 +24,10 @@ Use these after installation to check trigger behavior and output quality.
 
 10. Draft the about page. We have no brand voice yet, so give me a couple of voice options first.
 
+11. Now write the homepage copy for what we built in this session.
+
+12. Set up my voice for this project. (Or: `/human-copywrite setup`)
+
 ## Should not trigger
 
 1. Refactor this Python function.
@@ -37,6 +41,24 @@ Use these after installation to check trigger behavior and output quality.
 5. Chat with me about whether this idea is good.
 
 ## Evaluation samples
+
+### Transcript transplant sample
+
+Input:
+
+A long working session in which the user and the assistant built "Relay," a webhook debugging tool: first delivery inspection, then retry timelines, then Slack alerts. The user ends with: "Great, now write the homepage copy."
+
+Expected behavior:
+
+The chat is treated as source material, never as the manuscript. The output contains no session narrative ("we built," "then we added," "in this session"), no sections ordered by the build chronology, and no "we" meaning the chat participants. The copy is written from the source sheet: it opens on the reader's problem, orders sections by the reader's questions, states the mechanism, and uses placeholders for pricing or proof the session never established. A page that summarizes what happened in the session is a failure even if every sentence is clean.
+
+### Voice setup sample
+
+Input: `/human-copywrite setup` (or "Set up my brand voice for this project.")
+
+Expected behavior:
+
+One batched interview (six questions at most: samples, reader, product plus mechanism, verified proof, posture and bans, practical details), skipping anything the project context already answers. Then `MY_OWN_VOICE.md` is written to the project root using the template in `references/voice-setup.md`, shown to the user, and named as editable. Later copy tasks in the project load the file: its samples act as the provided voice sample, its proof may be stated as fact, its bans are always-fix, its caveats survive every edit, and none of it overrides the integrity layer.
 
 ### Process bleed sample
 
