@@ -6,6 +6,44 @@ documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.0] - 2026-07-11
+
+The portability release: the skill runs beyond Claude, with a measurement
+harness instead of a bare claim.
+
+### Added
+- **Portable single-file build.** `make portable` (via
+  `scripts/build_portable.sh`) concatenates `SKILL.md` and the core
+  references into `dist/human-copywrite-portable.md` for anything that takes
+  a system prompt: ChatGPT 5.5/5.6 Projects and custom GPTs, Gemini Gems, and
+  GLM 5.2, DeepSeek, and Kimi apps or their OpenAI-compatible APIs. A
+  trailing note remaps "load references/x.md" to the inlined sections, and
+  `references/voice-setup.md` gains a chat-only fallback: with no filesystem,
+  MY_OWN_VOICE.md is delivered as a code block the user saves and pastes back.
+- **Eval harness** (`tests/eval/`), built for the GLM claim. `score.py`
+  scores any copy output on always-bar violations by reusing the skill's own
+  scanner, plus per-task require/forbid checks (caveat survival, placeholders
+  instead of invented facts, no session narration). `run_model_eval.py` runs
+  six bundled tasks against any OpenAI-compatible endpoint bare and with the
+  portable build as system prompt, and prints the per-task and total delta.
+  `make eval` self-tests the scorer offline on bundled fixtures (the raw-slop
+  fixture scores 23 violations, the skill-written target rewrite scores 0);
+  the self-test and the portable build run in CI, so the measuring stick is
+  itself tested.
+- README: a "ChatGPT, Gemini, DeepSeek, Kimi, GLM" section with per-product
+  install lines and a GLM 5.2 subsection stating the positioning (budget
+  Chinese models get the bars, examples, and page craft an expensive frontier
+  setup runs on) together with the command that measures it on the reader's
+  own keys.
+- CI uploads both artifacts: the `.skill` package and the portable file.
+
+### Removed
+- The "not an AI-detector bypass" phrasing from the README, `SKILL.md`, and
+  `references/integrity.md`, and the "flags unverified claims" phrasing from
+  the package notes. The substantive integrity rules are unchanged: no
+  disguising authorship where disclosure is expected, persuasion never
+  outruns evidence, caveats survive, nothing is manufactured.
+
 ## [4.1.0] - 2026-07-11
 
 The human-copywriter release: the skill stops being only a de-slopper and
@@ -325,6 +363,7 @@ First public release.
 - Repository scaffolding: Apache-2.0 LICENSE, NOTICE, CONTRIBUTING,
   CODE_OF_CONDUCT, build script, automated checks, and CI.
 
+[4.2.0]: https://github.com/forint573/human-copywrite/releases/tag/v4.2.0
 [4.1.0]: https://github.com/forint573/human-copywrite/releases/tag/v4.1.0
 [4.0.0]: https://github.com/forint573/human-copywrite/releases/tag/v4.0.0
 [3.0.1]: https://github.com/forint573/human-copywrite/releases/tag/v3.0.1

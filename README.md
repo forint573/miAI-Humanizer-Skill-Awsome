@@ -48,7 +48,7 @@ The first row is the failure most humanizers miss: asked for site copy at the en
 - **The transcript rule.** Chat history never ships as copy. Site prose is written from a source sheet (reader, problem, product, mechanism, proof, objection, next step) extracted from the session, ordered by the reader's questions, not the build timeline.
 - **An edit bar, not a mood.** Every AI tell in a 30+ item catalog is tagged always-fix, cluster-fix (two tells in a paragraph, or three per 150 words), or context, so the same draft comes back the same way every time and good human writing is left alone.
 - **A substance layer.** Copy that passes every style check but says nothing a competitor couldn't also say is treated as a failure. The swap test, the negation test, and the so-what ladder force a real point, drawn only from your material.
-- **An integrity firewall.** Persuasion never outruns evidence: no invented proof, no stripped safety caveats, no manufactured scarcity or urgency, and it is not an AI-detector bypass.
+- **An integrity firewall.** Persuasion never outruns evidence: no invented proof, no stripped safety caveats, no manufactured scarcity or urgency.
 - **Fact safety that respects your material.** Missing specifics become visible placeholders like `[ADD VERIFIED METRIC]`; specifics already in your draft stay and get flagged under `Verify` instead of deleted. Guarantees and countdowns get intervened on inline.
 - **Per-project voice** via `MY_OWN_VOICE.md` (below).
 - **A fixed reply shape.** Deliverable first, then at most a six-line labeled editorial note (Changed / Verify / Placeholders / Flagged / Register).
@@ -63,6 +63,21 @@ From then on, every copy task in that project loads the file automatically: your
 ## Models
 
 Calibrated for Claude Sonnet 5, Opus 4.8, and Fable 5: hard bars and defined output shapes for literal instruction-followers, a light goal-stated layer for Fable 5 (which does worse under over-prescriptive skills, per Anthropic's own guidance). Run at effort `high` (`xhigh` for heavy rescue rewrites). Sonnet 5 thinks adaptively by default; on Opus 4.8 set `thinking: {type: "adaptive"}`; on Fable 5 omit the thinking parameter entirely. Earlier Claude models run it fine.
+
+### ChatGPT, Gemini, DeepSeek, Kimi, GLM
+
+`make portable` builds `dist/human-copywrite-portable.md`: the whole skill as one file, for anything that takes a system prompt. ChatGPT 5.5 and 5.6: paste it into a Project's instructions or a custom GPT. Gemini: a Gem's instructions. GLM 5.2, DeepSeek, Kimi: the system prompt in the app, or the system message over their OpenAI-compatible APIs. In chat-only settings the file's inline sections replace file loading, and MY_OWN_VOICE.md is delivered as a block you save and paste back. Keep each model's reasoning or thinking mode on where it has one.
+
+**Made for GLM 5.2 in particular.** The cheap and free Chinese models (GLM, DeepSeek, Kimi) have the raw fluency; what they lack out of the box is the discipline: they hype, pad, narrate the session, and reach for proof they do not have. The portable build packs the bars, the examples, and the page craft an expensive frontier setup runs on into their system prompt, so a budget model writes like an expensive frontier model instead of a brochure generator. That claim ships with its own test rather than asking for your trust: `make model-eval` runs six copy tasks against any OpenAI-compatible endpoint, bare and with the skill, and scores both runs on always-bar violations (AI tells, dashes, wrapper text, session narration, unbacked guarantees) plus per-task checks like caveat survival and placeholder-instead-of-invention. Read the delta on your own keys.
+
+```bash
+make portable
+export EVAL_BASE_URL=https://open.bigmodel.cn/api/paas/v4   # GLM; check your provider's docs
+export EVAL_API_KEY=your-key EVAL_MODEL=glm-5.2
+make model-eval
+```
+
+The scorer reuses the skill's own scanner and validates itself offline in CI (`make eval`), so the measuring stick is tested even before a model is.
 
 ## What's inside
 
@@ -83,10 +98,12 @@ human-copywrite/
 └── tests/test-prompts.md         # trigger checks and evaluation samples
 ```
 
+The repo also ships `scripts/build_portable.sh` (the single-file build) and `tests/eval/` (the with/without-skill measurement harness with its fixtures and tasks).
+
 The output is a template a human finishes, not publish-without-review copy. This README follows the skill's own rules; the *Before* cells above break them on purpose.
 
 ## Contributing and license
 
 PRs welcome: see [CONTRIBUTING.md](CONTRIBUTING.md); keep `make check` green. Apache 2.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE). Full version history in [CHANGELOG.md](CHANGELOG.md).
 
-> "Claude", "Sonnet", "Opus", and "Fable" are model names from Anthropic. This is an independent community skill, not affiliated with or endorsed by Anthropic.
+> "Claude", "Sonnet", "Opus", and "Fable" are model names from Anthropic; ChatGPT, Gemini, GLM, DeepSeek, and Kimi are trademarks of their respective owners. This is an independent community skill, not affiliated with or endorsed by any of them.

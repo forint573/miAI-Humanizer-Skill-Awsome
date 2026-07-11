@@ -76,7 +76,7 @@ Be careful, and say so plainly, when the real use is:
 - Anything where AI involvement or sponsorship must be disclosed.
 - Passing AI text as a specific real person's authentic, unaided writing where that distinction matters to the reader.
 
-This skill is not an AI-detector bypass. The goal is honest writing that happens to read well, not deception that happens to read human. When a request is really about hiding who wrote it or whether a claim is earned, name that, and offer the honest version instead.
+The goal is honest writing that happens to read well, not deception that happens to read human. When a request is really about hiding who wrote it or whether a claim is earned, name that, and offer the honest version instead.
 
 ## Before shipping: the harm check
 

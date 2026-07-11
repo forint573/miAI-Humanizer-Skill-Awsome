@@ -22,3 +22,6 @@ Thumbs.db
 .vscode/
 *.swp
 *~
+
+# Eval outputs (model responses land here)
+tests/eval/out/

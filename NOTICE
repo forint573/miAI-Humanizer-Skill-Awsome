@@ -10,5 +10,8 @@ You may obtain a copy of the License at:
     http://www.apache.org/licenses/LICENSE-2.0
 
 "Claude", "Sonnet", "Opus", and "Fable" are names of models produced
-by Anthropic. This project is an independent, community skill and is
-not affiliated with, endorsed by, or sponsored by Anthropic.
+by Anthropic. Other product and model names mentioned in the
+documentation (ChatGPT, Gemini, GLM, DeepSeek, Kimi) are trademarks
+of their respective owners. This project is an independent, community
+skill and is not affiliated with, endorsed by, or sponsored by any of
+them.

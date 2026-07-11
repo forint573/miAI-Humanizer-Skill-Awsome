@@ -21,6 +21,18 @@ scan: ## Scan a draft, e.g. make scan FILE=draft.txt
 build: ## Package dist/human-copywrite.skill
 	bash scripts/build_skill.sh
 
+.PHONY: portable
+portable: ## Build dist/human-copywrite-portable.md (single file for ChatGPT/Gemini/GLM/DeepSeek/Kimi)
+	bash scripts/build_portable.sh
+
+.PHONY: eval
+eval: ## Validate the eval harness offline (scorer self-test on bundled fixtures)
+	python tests/eval/score.py --self-test
+
+.PHONY: model-eval
+model-eval: portable ## Run the with/without-skill eval against EVAL_BASE_URL/EVAL_MODEL (needs EVAL_API_KEY)
+	python tests/eval/run_model_eval.py
+
 .PHONY: clean
 clean: ## Remove build artifacts
 	rm -rf $(DIST_DIR)

@@ -38,9 +38,14 @@ jobs:
       - name: Build skill package
         run: make build
 
-      - name: Upload artifact
+      - name: Build portable single-file version
+        run: make portable
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: human-copywrite-skill
-          path: dist/human-copywrite.skill
+          path: |
+            dist/human-copywrite.skill
+            dist/human-copywrite-portable.md
           if-no-files-found: error

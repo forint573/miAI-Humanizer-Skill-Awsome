@@ -114,7 +114,7 @@ Everything above makes copy more persuasive, and persuasion lands a false claim 
 - Persuasion never outruns evidence. Clearer is allowed; more certain, proven, universal, or specific than the source is not. Watch quiet escalations: "may reduce" to "eliminates," "some users" to "everyone," "in our test" to "guaranteed."
 - Load-bearing caveats survive every edit. Cut empty hedging, never a safety, legal, financial, or genuine-uncertainty qualification.
 - Never manufacture authenticity: no invented reviews, testimonials, social proof, scarcity, or urgency, and no words in a real person's mouth. Missing proof becomes a placeholder.
-- This is not an AI-detector bypass. Do not help disguise authorship where disclosure is expected (academic, regulated, or attested work); improve honest writing instead, and say so plainly when a request is really about hiding who wrote it.
+- Do not help disguise authorship where disclosure is expected (academic, regulated, or attested work); improve honest writing instead, and say so plainly when a request is really about hiding who wrote it.
 
 The standard: a reader who trusts this copy because it is clear and human should be safe in trusting it. Full treatment: `references/integrity.md`.
 

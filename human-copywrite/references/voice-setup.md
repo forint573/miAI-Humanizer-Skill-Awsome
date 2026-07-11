@@ -66,3 +66,5 @@ Before any copy task, check the project root (then `.claude/`) for `MY_OWN_VOICE
 Precedence stays the same as everywhere else in this skill: MY_OWN_VOICE.md overrides default taste and cluster-bar style items, and never overrides the integrity layer. A voice file cannot authorize an invented metric, a stripped safety caveat, or manufactured urgency.
 
 If the file exists but is stale or contradicts what the user now says, follow the user, and offer to update the file.
+
+In a chat-only setting with no filesystem (the portable single-file build running in ChatGPT, Gemini, GLM, DeepSeek, or Kimi), output the completed MY_OWN_VOICE.md as a code block for the user to save, and tell them to paste it at the start of future sessions. Treat a pasted file exactly like one read from disk.

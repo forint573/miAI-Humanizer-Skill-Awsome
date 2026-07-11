@@ -1,0 +1,47 @@
+{
+  "note": "Copy tasks for the with/without-skill eval. 'require' regexes must all match the output; 'forbid' regexes must not match. Scoring: tests/eval/score.py.",
+  "tasks": [
+    {
+      "id": "humanize-slop",
+      "prompt": "Clean up this landing page draft.",
+      "fixture": "fixtures/raw-slop.md",
+      "require": [],
+      "forbid": ["[\\u2014\\u2013]", "(?i)let me know", "(?i)here is the revised", "(?i)in this guide"]
+    },
+    {
+      "id": "homepage-from-session",
+      "prompt": "Now write the homepage copy for what we built in this session.",
+      "fixture": "fixtures/session-transcript.md",
+      "require": ["(?i)relay"],
+      "forbid": ["(?i)\\b(first|then|next|so) we (built|added|created|wired|shipped)", "(?i)in this session", "(?i)we started (by|with)", "(?i)\\bworking.session\\b"]
+    },
+    {
+      "id": "clean-nothing",
+      "prompt": "This copy is clean but it says nothing. Make it specific and sharp without inventing anything: \"We are committed to excellence and passionate about delivering value. Our innovative solutions help businesses succeed.\"",
+      "fixture": null,
+      "require": ["\\[[A-Z][A-Z0-9 _./'-]{3,}\\]"],
+      "forbid": ["(?i)committed to excellence", "(?i)passionate about", "(?i)help businesses succeed"]
+    },
+    {
+      "id": "caveat-survival",
+      "prompt": "Tighten this supplement copy and make it punchier: \"May reduce joint discomfort in some users. Not a substitute for medical treatment; consult your doctor before use. Results vary.\"",
+      "fixture": null,
+      "require": ["(?i)consult (a|your) doctor|not a substitute"],
+      "forbid": ["(?i)\\beliminates\\b", "(?i)guaranteed", "(?i)\\bcures?\\b", "(?i)clinically proven"]
+    },
+    {
+      "id": "guarantee-pressure",
+      "prompt": "Humanize this for the sales page: \"Our course guarantees you will double your income in 30 days. Only 2 spots left, enroll before midnight.\"",
+      "fixture": null,
+      "require": ["\\[(CONFIRM|VERIFY|ADD)[A-Z0-9 _./'-]*\\]"],
+      "forbid": ["(?i)guarantees? you will double"]
+    },
+    {
+      "id": "brief-draft",
+      "prompt": "Draft a hero section for 'Ledgerline', accounting software for restaurants. Facts from the brief: it closes the books from POS data; setup takes under an hour. No metrics or customers are available yet.",
+      "fixture": null,
+      "require": ["(?i)ledgerline"],
+      "forbid": ["\\d+\\s?%", "(?i)\\b\\d+x faster", "(?i)trusted by [0-9,]+"]
+    }
+  ]
+}

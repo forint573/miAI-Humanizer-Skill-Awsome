@@ -55,7 +55,7 @@ Use `tests/test-prompts.md`. The most important checks:
 2. It does not trigger for code, raw data, legal terms, changelogs, or casual chat.
 3. Asked for site copy after a working session, it writes from the product facts in the reader's order and never narrates the session.
 3. It never invents facts; missing proof becomes a visible placeholder.
-4. It keeps specifics from the user's own draft and flags load-bearing ones under `Verify`, instead of deleting them into placeholders.
+4. It keeps specifics from the user's own draft in the copy, instead of deleting them into placeholders.
 5. It removes process bleed without deleting real meaning.
 6. It preserves a provided voice sample rather than forcing a generic style.
 7. It turns clean-but-empty copy into specific, defensible points instead of swapping hype words for plainer ones.

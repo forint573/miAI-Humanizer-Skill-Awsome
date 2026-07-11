@@ -240,6 +240,37 @@ check(
 )
 
 
+# --- 5e. Eval harness self-test ----------------------------------------------
+section("Eval harness (offline self-test)")
+
+eval_proc = subprocess.run(
+    [sys.executable, str(ROOT / "tests" / "eval" / "score.py"), "--self-test"],
+    capture_output=True, text=True,
+)
+check("eval scorer self-test passes", eval_proc.returncode == 0,
+      (eval_proc.stdout + eval_proc.stderr).strip()[-200:])
+
+
+# --- 5f. Portable build --------------------------------------------------------
+section("Portable single-file build")
+
+portable_proc = subprocess.run(
+    ["bash", str(ROOT / "scripts" / "build_portable.sh")],
+    capture_output=True, text=True, cwd=ROOT,
+)
+check("portable build succeeds", portable_proc.returncode == 0,
+      (portable_proc.stdout + portable_proc.stderr).strip()[-200:])
+portable_path = ROOT / "dist" / "human-copywrite-portable.md"
+if portable_path.is_file():
+    portable_text = portable_path.read_text(encoding="utf-8")
+    check("portable build has no frontmatter", "name: human-copywrite" not in portable_text[:300])
+    check("portable build carries the edit bar", "## The edit bar" in portable_text)
+    check("portable build carries the tell catalog", "Diagnostic Catalog" in portable_text)
+    check("portable build carries the voice setup", "MY_OWN_VOICE" in portable_text)
+else:
+    check("portable build output exists", False, str(portable_path))
+
+
 # --- 6. Scanner stays quiet on clean copy -----------------------------------
 section("Scanner stays quiet on clean copy")
 
